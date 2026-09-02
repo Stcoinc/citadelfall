@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: hero_archer
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: hero_archer
+  _displayNameKey: Archer
+  _descriptionKey: Long-range precision hunter with fast attacks and no splash damage.
+  _behaviorId: behavior_piercing_hero
+  _prefabId: prefab_hero_defender
+  _iconId: icon_hero_archer
+  _icon: {fileID: 5189695305162111521, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
+  _prefab: {fileID: 8006705434921343632, guid: 9e8d44d67a290134f8172703dcda8f47, type: 3}
+  _targetingMode: 0
+  _buildCost: 45
+  _powerCost: 0
+  _damage: 21
+  _range: 7
+  _attackIntervalSeconds: 0.55
+  _maxLevel: 7
+  _powerRating: 76
+  _preferredEnemyTag: all
+  _damageType: piercing
+  _hasSplash: 0
+  _unlockCostCoins: 0
+  _levelDisplayNames:
+  - Archer
+  - Archer 2
+  - Archer 3
+  - Archer 4
+  - Archer 5
+  - Archer 6
+  - Archer 7
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 60
+    Damage: 26.2
+    Range: 7.2
+    AttackIntervalSeconds: 0.53
+    PowerRating: 94
+  - FromLevel: 2
+    ToLevel: 3
+    Currency: 0
+    Cost: 90
+    Damage: 32.5
+    Range: 7.4
+    AttackIntervalSeconds: 0.51
+    PowerRating: 116
+  - FromLevel: 3
+    ToLevel: 4
+    Currency: 0
+    Cost: 130
+    Damage: 39.9
+    Range: 7.6
+    AttackIntervalSeconds: 0.48
+    PowerRating: 141
+  - FromLevel: 4
+    ToLevel: 5
+    Currency: 0
+    Cost: 180
+    Damage: 48.3
+    Range: 7.8
+    AttackIntervalSeconds: 0.46
+    PowerRating: 169
+  - FromLevel: 5
+    ToLevel: 6
+    Currency: 0
+    Cost: 240
+    Damage: 58.8
+    Range: 8
+    AttackIntervalSeconds: 0.44
+    PowerRating: 201
+  - FromLevel: 6
+    ToLevel: 7
+    Currency: 0
+    Cost: 320
+    Damage: 71.4
+    Range: 8.3
+    AttackIntervalSeconds: 0.42
+    PowerRating: 236
+  _merges:
+  - RequiredLevel: 1
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 30
+  - RequiredLevel: 2
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 55
+  - RequiredLevel: 3
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 90
+  - RequiredLevel: 4
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 140
+  - RequiredLevel: 5
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 200
+  - RequiredLevel: 6
+    ResultTowerId: hero_archer
+    Currency: 1
+    Cost: 275

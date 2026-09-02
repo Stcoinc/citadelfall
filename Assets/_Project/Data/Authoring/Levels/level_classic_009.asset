@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e09f980c3be71942b23e396b5335566, type: 3}
+  m_Name: level_classic_009
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.LevelDefinitionAsset
+  _id: level_classic_009
+  _displayNameKey: Skybridge Ruins
+  _mode: 0
+  _startingScrap: 275
+  _baseHealth: 52
+  _buildSocketCount: 9
+  _waveSet: {fileID: 11400000, guid: 46714c56da710634f8869cc43f3b7b7b, type: 2}
+  _battlefieldLayout: {fileID: 11400000, guid: 2a8384754dc77d24193ac36777f4a658, type: 2}
+  _rewardScrap: 260
+  _rewardCoins: 370
+  _rewardGems: 5
+  _rewardItemId: skybridge_core

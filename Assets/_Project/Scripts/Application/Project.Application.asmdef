@@ -1,0 +1,17 @@
+{
+  "name": "Project.Application",
+  "rootNamespace": "ClubGamerZone.TowerDefense.Application",
+  "references": [
+    "Project.Core",
+    "Project.Domain"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": true
+}

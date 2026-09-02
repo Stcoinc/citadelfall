@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: hero_sorcerer
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: hero_sorcerer
+  _displayNameKey: Sorcerer
+  _descriptionKey: Elite shadow caster with devastating splash damage and boss priority.
+  _behaviorId: behavior_shadow_hero
+  _prefabId: prefab_hero_defender
+  _iconId: icon_hero_sorcerer
+  _icon: {fileID: -6813865010122789510, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
+  _prefab: {fileID: 8006705434921343632, guid: 9e8d44d67a290134f8172703dcda8f47, type: 3}
+  _targetingMode: 5
+  _buildCost: 100
+  _powerCost: 0
+  _damage: 52
+  _range: 5.6
+  _attackIntervalSeconds: 1.15
+  _maxLevel: 7
+  _powerRating: 88
+  _preferredEnemyTag: all
+  _damageType: shadow
+  _hasSplash: 1
+  _unlockCostCoins: 750
+  _levelDisplayNames:
+  - Sorcerer
+  - Sorcerer 2
+  - Sorcerer 3
+  - Sorcerer 4
+  - Sorcerer 5
+  - Sorcerer 6
+  - Sorcerer 7
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 60
+    Damage: 65
+    Range: 5.8
+    AttackIntervalSeconds: 1.1
+    PowerRating: 106
+  - FromLevel: 2
+    ToLevel: 3
+    Currency: 0
+    Cost: 90
+    Damage: 80.6
+    Range: 5.9
+    AttackIntervalSeconds: 1.06
+    PowerRating: 128
+  - FromLevel: 3
+    ToLevel: 4
+    Currency: 0
+    Cost: 130
+    Damage: 98.8
+    Range: 6.1
+    AttackIntervalSeconds: 1.01
+    PowerRating: 153
+  - FromLevel: 4
+    ToLevel: 5
+    Currency: 0
+    Cost: 180
+    Damage: 119.6
+    Range: 6.3
+    AttackIntervalSeconds: 0.97
+    PowerRating: 181
+  - FromLevel: 5
+    ToLevel: 6
+    Currency: 0
+    Cost: 240
+    Damage: 145.6
+    Range: 6.4
+    AttackIntervalSeconds: 0.92
+    PowerRating: 213
+  - FromLevel: 6
+    ToLevel: 7
+    Currency: 0
+    Cost: 320
+    Damage: 176.8
+    Range: 6.6
+    AttackIntervalSeconds: 0.87
+    PowerRating: 248
+  _merges:
+  - RequiredLevel: 1
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 30
+  - RequiredLevel: 2
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 55
+  - RequiredLevel: 3
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 90
+  - RequiredLevel: 4
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 140
+  - RequiredLevel: 5
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 200
+  - RequiredLevel: 6
+    ResultTowerId: hero_sorcerer
+    Currency: 1
+    Cost: 275

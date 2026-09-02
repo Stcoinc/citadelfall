@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: hero_mage
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: hero_mage
+  _displayNameKey: Mage
+  _descriptionKey: Affordable arcane caster whose sweeping attacks damage enemy groups.
+  _behaviorId: behavior_arcane_hero
+  _prefabId: prefab_hero_defender
+  _iconId: icon_hero_mage
+  _icon: {fileID: -8799085074590437183, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
+  _prefab: {fileID: 8006705434921343632, guid: 9e8d44d67a290134f8172703dcda8f47, type: 3}
+  _targetingMode: 0
+  _buildCost: 35
+  _powerCost: 0
+  _damage: 24
+  _range: 5.8
+  _attackIntervalSeconds: 0.8
+  _maxLevel: 7
+  _powerRating: 72
+  _preferredEnemyTag: all
+  _damageType: arcane
+  _hasSplash: 1
+  _unlockCostCoins: 0
+  _levelDisplayNames:
+  - Mage
+  - Mage 2
+  - Mage 3
+  - Mage 4
+  - Mage 5
+  - Mage 6
+  - Mage 7
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 60
+    Damage: 30
+    Range: 6
+    AttackIntervalSeconds: 0.77
+    PowerRating: 90
+  - FromLevel: 2
+    ToLevel: 3
+    Currency: 0
+    Cost: 90
+    Damage: 37.2
+    Range: 6.1
+    AttackIntervalSeconds: 0.74
+    PowerRating: 112
+  - FromLevel: 3
+    ToLevel: 4
+    Currency: 0
+    Cost: 130
+    Damage: 45.6
+    Range: 6.3
+    AttackIntervalSeconds: 0.7
+    PowerRating: 137
+  - FromLevel: 4
+    ToLevel: 5
+    Currency: 0
+    Cost: 180
+    Damage: 55.2
+    Range: 6.5
+    AttackIntervalSeconds: 0.67
+    PowerRating: 165
+  - FromLevel: 5
+    ToLevel: 6
+    Currency: 0
+    Cost: 240
+    Damage: 67.2
+    Range: 6.7
+    AttackIntervalSeconds: 0.64
+    PowerRating: 197
+  - FromLevel: 6
+    ToLevel: 7
+    Currency: 0
+    Cost: 320
+    Damage: 81.6
+    Range: 6.8
+    AttackIntervalSeconds: 0.61
+    PowerRating: 232
+  _merges:
+  - RequiredLevel: 1
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 30
+  - RequiredLevel: 2
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 55
+  - RequiredLevel: 3
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 90
+  - RequiredLevel: 4
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 140
+  - RequiredLevel: 5
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 200
+  - RequiredLevel: 6
+    ResultTowerId: hero_mage
+    Currency: 1
+    Cost: 275

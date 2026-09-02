@@ -1,0 +1,21 @@
+{
+    "name": "Project.Features.Gameplay",
+    "rootNamespace": "ClubGamerZone.TowerDefense.Features.Gameplay",
+    "references": [
+        "Project.Core",
+        "Project.Domain",
+        "Project.Application",
+        "Project.Infrastructure",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

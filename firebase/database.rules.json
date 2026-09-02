@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "gameSettings": {
+      ".read": true,
+      ".write": false
+    },
+    "usernames": {
+      "$username": {
+        ".read": true,
+        ".write": "auth != null && newData.hasChildren(['userId', 'email', 'username']) && newData.child('userId').val() == auth.uid && newData.child('username').val() == $username && (!data.exists() || data.child('userId').val() == auth.uid)",
+        ".validate": "$username.matches(/^[a-z0-9_]{3,20}$/)"
+      }
+    },
+    "players": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "profile": {
+          "username": {
+            ".validate": "newData.isString() && (((!data.exists() || data.val() == '') && newData.val() == '') || (data.exists() && data.val() == newData.val()) || ((!data.exists() || data.val() == '') && newData.val().matches(/^[a-z0-9_]{3,20}$/) && root.child('usernames').child(newData.val()).child('userId').val() == auth.uid))"
+          }
+        }
+      }
+    }
+  }
+}

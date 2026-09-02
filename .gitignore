@@ -1,0 +1,63 @@
+# Unity generated folders
+/Library/
+/Temp/
+/Obj/
+/obj/
+/Build/
+/Builds/
+/Logs/
+/UserSettings/
+/MemoryCaptures/
+
+# Unity generated files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+crashlytics-build.properties
+~UnityDirMonSyncFile~*
+
+# IDEs and OS files
+.vs/
+.vscode/
+.idea/
+.gradle/
+.DS_Store*
+Thumbs.db
+Desktop.ini
+
+# Build artifacts
+*.apk
+*.aab
+*.app
+*.ipa
+*.unitypackage
+
+# Local/private configuration
+*.private
+*.private.meta
+*.private.*
+*.private.*.meta
+
+# Asset Store / Plastic generated files
+Assets/AssetStoreTools/
+Assets/Plugins/PlasticSCM*
+
+# Addressables generated content
+Assets/AddressableAssetsData/*/*.bin*
+Assets/StreamingAssets/aa.meta
+Assets/StreamingAssets/aa/*

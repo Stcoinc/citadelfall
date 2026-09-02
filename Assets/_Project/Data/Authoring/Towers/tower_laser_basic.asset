@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: tower_laser_basic
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: tower_laser_basic
+  _displayNameKey: Laser Turret
+  _descriptionKey: tower_laser_basic_description
+  _behaviorId: behavior_laser_single_target
+  _prefabId: prefab_tower_laser_basic
+  _iconId: icon_tower_laser_basic
+  _icon: {fileID: 0}
+  _prefab: {fileID: 0}
+  _targetingMode: 0
+  _buildCost: 50
+  _powerCost: 2
+  _damage: 12
+  _range: 5.5
+  _attackIntervalSeconds: 0.45
+  _maxLevel: 3
+  _powerRating: 42
+  _preferredEnemyTag: scout
+  _damageType: laser
+  _hasSplash: 0
+  _unlockCostCoins: 0
+  _levelDisplayNames:
+  - Laser Turret
+  - Laser Turret 2
+  - Laser Turret 3
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 90
+    Damage: 18
+    Range: 5.8
+    AttackIntervalSeconds: 0.4
+    PowerRating: 64
+  - FromLevel: 2
+    ToLevel: 3
+    Currency: 0
+    Cost: 250
+    Damage: 28
+    Range: 6.1
+    AttackIntervalSeconds: 0.34
+    PowerRating: 92
+  _merges:
+  - RequiredLevel: 1
+    ResultTowerId: tower_laser_overcharged
+    Currency: 1
+    Cost: 75

@@ -1,0 +1,26 @@
+{
+  "name": "Project.Tests.EditMode",
+  "rootNamespace": "ClubGamerZone.TowerDefense.Tests.EditMode",
+  "references": [
+    "Project.Core",
+    "Project.Domain",
+    "Project.Application",
+    "Project.Infrastructure",
+    "Project.Features.Gameplay"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "nunit.framework.dll"
+  ],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

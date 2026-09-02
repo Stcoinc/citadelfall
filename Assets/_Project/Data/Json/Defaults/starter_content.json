@@ -1,0 +1,1696 @@
+{
+    "SchemaVersion": 1,
+    "ContentVersion": "2026.09.01.002",
+    "Towers": [
+        {
+            "Id": "hero_archer",
+            "DisplayNameKey": "Archer",
+            "DescriptionKey": "Long-range precision hunter with fast attacks and no splash damage.",
+            "BehaviorId": "behavior_piercing_hero",
+            "TargetingMode": "First",
+            "BuildCost": 45,
+            "PowerCost": 0,
+            "Damage": 21.0,
+            "Range": 7.0,
+            "AttackIntervalSeconds": 0.550000011920929,
+            "MaxLevel": 7,
+            "PowerRating": 76,
+            "PreferredEnemyTag": "all",
+            "DamageType": "piercing",
+            "HasSplash": false,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_archer",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Archer",
+                "Archer 2",
+                "Archer 3",
+                "Archer 4",
+                "Archer 5",
+                "Archer 6",
+                "Archer 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 26.200000762939454,
+                    "Range": 7.199999809265137,
+                    "AttackIntervalSeconds": 0.5299999713897705,
+                    "PowerRating": 94
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 32.5,
+                    "Range": 7.400000095367432,
+                    "AttackIntervalSeconds": 0.5099999904632568,
+                    "PowerRating": 116
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 39.900001525878909,
+                    "Range": 7.599999904632568,
+                    "AttackIntervalSeconds": 0.47999998927116396,
+                    "PowerRating": 141
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 48.29999923706055,
+                    "Range": 7.800000190734863,
+                    "AttackIntervalSeconds": 0.46000000834465029,
+                    "PowerRating": 169
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 58.79999923706055,
+                    "Range": 8.0,
+                    "AttackIntervalSeconds": 0.4399999976158142,
+                    "PowerRating": 201
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 71.4000015258789,
+                    "Range": 8.300000190734864,
+                    "AttackIntervalSeconds": 0.41999998688697817,
+                    "PowerRating": 236
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_archer",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "hero_druid",
+            "DisplayNameKey": "Druid",
+            "DescriptionKey": "Nature specialist whose splash magic finishes weakened enemy groups.",
+            "BehaviorId": "behavior_nature_hero",
+            "TargetingMode": "LowestHealth",
+            "BuildCost": 55,
+            "PowerCost": 0,
+            "Damage": 19.0,
+            "Range": 5.199999809265137,
+            "AttackIntervalSeconds": 0.699999988079071,
+            "MaxLevel": 7,
+            "PowerRating": 74,
+            "PreferredEnemyTag": "all",
+            "DamageType": "nature",
+            "HasSplash": true,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_druid",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Druid",
+                "Druid 2",
+                "Druid 3",
+                "Druid 4",
+                "Druid 5",
+                "Druid 6",
+                "Druid 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 23.799999237060548,
+                    "Range": 5.400000095367432,
+                    "AttackIntervalSeconds": 0.6700000166893005,
+                    "PowerRating": 92
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 29.399999618530275,
+                    "Range": 5.5,
+                    "AttackIntervalSeconds": 0.6399999856948853,
+                    "PowerRating": 114
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 36.099998474121097,
+                    "Range": 5.699999809265137,
+                    "AttackIntervalSeconds": 0.6200000047683716,
+                    "PowerRating": 139
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 43.70000076293945,
+                    "Range": 5.800000190734863,
+                    "AttackIntervalSeconds": 0.5899999737739563,
+                    "PowerRating": 167
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 53.20000076293945,
+                    "Range": 6.0,
+                    "AttackIntervalSeconds": 0.5600000023841858,
+                    "PowerRating": 199
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 64.5999984741211,
+                    "Range": 6.099999904632568,
+                    "AttackIntervalSeconds": 0.5299999713897705,
+                    "PowerRating": 234
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_druid",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "hero_mage",
+            "DisplayNameKey": "Mage",
+            "DescriptionKey": "Affordable arcane caster whose sweeping attacks damage enemy groups.",
+            "BehaviorId": "behavior_arcane_hero",
+            "TargetingMode": "First",
+            "BuildCost": 35,
+            "PowerCost": 0,
+            "Damage": 24.0,
+            "Range": 5.800000190734863,
+            "AttackIntervalSeconds": 0.800000011920929,
+            "MaxLevel": 7,
+            "PowerRating": 72,
+            "PreferredEnemyTag": "all",
+            "DamageType": "arcane",
+            "HasSplash": true,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_mage",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Mage",
+                "Mage 2",
+                "Mage 3",
+                "Mage 4",
+                "Mage 5",
+                "Mage 6",
+                "Mage 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 30.0,
+                    "Range": 6.0,
+                    "AttackIntervalSeconds": 0.7699999809265137,
+                    "PowerRating": 90
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 37.20000076293945,
+                    "Range": 6.099999904632568,
+                    "AttackIntervalSeconds": 0.7400000095367432,
+                    "PowerRating": 112
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 45.599998474121097,
+                    "Range": 6.300000190734863,
+                    "AttackIntervalSeconds": 0.699999988079071,
+                    "PowerRating": 137
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 55.20000076293945,
+                    "Range": 6.5,
+                    "AttackIntervalSeconds": 0.6700000166893005,
+                    "PowerRating": 165
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 67.19999694824219,
+                    "Range": 6.699999809265137,
+                    "AttackIntervalSeconds": 0.6399999856948853,
+                    "PowerRating": 197
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 81.5999984741211,
+                    "Range": 6.800000190734863,
+                    "AttackIntervalSeconds": 0.6100000143051148,
+                    "PowerRating": 232
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_mage",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "hero_paladin",
+            "DisplayNameKey": "Paladin",
+            "DescriptionKey": "Heavy holy guardian whose splash attacks focus the healthiest enemies.",
+            "BehaviorId": "behavior_holy_hero",
+            "TargetingMode": "HighestHealth",
+            "BuildCost": 75,
+            "PowerCost": 0,
+            "Damage": 32.0,
+            "Range": 3.799999952316284,
+            "AttackIntervalSeconds": 0.8999999761581421,
+            "MaxLevel": 7,
+            "PowerRating": 82,
+            "PreferredEnemyTag": "all",
+            "DamageType": "holy",
+            "HasSplash": true,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_paladin",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Paladin",
+                "Paladin 2",
+                "Paladin 3",
+                "Paladin 4",
+                "Paladin 5",
+                "Paladin 6",
+                "Paladin 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 40.0,
+                    "Range": 3.9000000953674318,
+                    "AttackIntervalSeconds": 0.8600000143051148,
+                    "PowerRating": 100
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 49.599998474121097,
+                    "Range": 4.0,
+                    "AttackIntervalSeconds": 0.8299999833106995,
+                    "PowerRating": 122
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 60.79999923706055,
+                    "Range": 4.099999904632568,
+                    "AttackIntervalSeconds": 0.7900000214576721,
+                    "PowerRating": 147
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 73.5999984741211,
+                    "Range": 4.300000190734863,
+                    "AttackIntervalSeconds": 0.7599999904632568,
+                    "PowerRating": 175
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 89.5999984741211,
+                    "Range": 4.400000095367432,
+                    "AttackIntervalSeconds": 0.7200000286102295,
+                    "PowerRating": 207
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 108.80000305175781,
+                    "Range": 4.5,
+                    "AttackIntervalSeconds": 0.6800000071525574,
+                    "PowerRating": 242
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_paladin",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "hero_sorcerer",
+            "DisplayNameKey": "Sorcerer",
+            "DescriptionKey": "Elite shadow caster with devastating splash damage and boss priority.",
+            "BehaviorId": "behavior_shadow_hero",
+            "TargetingMode": "BossPriority",
+            "BuildCost": 100,
+            "PowerCost": 0,
+            "Damage": 52.0,
+            "Range": 5.599999904632568,
+            "AttackIntervalSeconds": 1.149999976158142,
+            "MaxLevel": 7,
+            "PowerRating": 88,
+            "PreferredEnemyTag": "all",
+            "DamageType": "shadow",
+            "HasSplash": true,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_sorcerer",
+            "UnlockCostCoins": 750,
+            "LevelDisplayNames": [
+                "Sorcerer",
+                "Sorcerer 2",
+                "Sorcerer 3",
+                "Sorcerer 4",
+                "Sorcerer 5",
+                "Sorcerer 6",
+                "Sorcerer 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 65.0,
+                    "Range": 5.800000190734863,
+                    "AttackIntervalSeconds": 1.100000023841858,
+                    "PowerRating": 106
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 80.5999984741211,
+                    "Range": 5.900000095367432,
+                    "AttackIntervalSeconds": 1.059999942779541,
+                    "PowerRating": 128
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 98.80000305175781,
+                    "Range": 6.099999904632568,
+                    "AttackIntervalSeconds": 1.0099999904632569,
+                    "PowerRating": 153
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 119.5999984741211,
+                    "Range": 6.300000190734863,
+                    "AttackIntervalSeconds": 0.9700000286102295,
+                    "PowerRating": 181
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 145.60000610351563,
+                    "Range": 6.400000095367432,
+                    "AttackIntervalSeconds": 0.9200000166893005,
+                    "PowerRating": 213
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 176.8000030517578,
+                    "Range": 6.599999904632568,
+                    "AttackIntervalSeconds": 0.8700000047683716,
+                    "PowerRating": 248
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_sorcerer",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "hero_warrior",
+            "DisplayNameKey": "Warrior",
+            "DescriptionKey": "Basic frontline defender with powerful close strikes and no splash damage.",
+            "BehaviorId": "behavior_steel_hero",
+            "TargetingMode": "Closest",
+            "BuildCost": 60,
+            "PowerCost": 0,
+            "Damage": 42.0,
+            "Range": 2.799999952316284,
+            "AttackIntervalSeconds": 0.6499999761581421,
+            "MaxLevel": 7,
+            "PowerRating": 78,
+            "PreferredEnemyTag": "all",
+            "DamageType": "steel",
+            "HasSplash": false,
+            "PrefabId": "prefab_hero_defender",
+            "IconId": "icon_hero_warrior",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Warrior",
+                "Warrior 2",
+                "Warrior 3",
+                "Warrior 4",
+                "Warrior 5",
+                "Warrior 6",
+                "Warrior 7"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 60,
+                    "Damage": 52.5,
+                    "Range": 2.9000000953674318,
+                    "AttackIntervalSeconds": 0.6200000047683716,
+                    "PowerRating": 96
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 65.0999984741211,
+                    "Range": 3.0,
+                    "AttackIntervalSeconds": 0.6000000238418579,
+                    "PowerRating": 118
+                },
+                {
+                    "FromLevel": 3,
+                    "ToLevel": 4,
+                    "Currency": "Scrap",
+                    "Cost": 130,
+                    "Damage": 79.80000305175781,
+                    "Range": 3.0999999046325685,
+                    "AttackIntervalSeconds": 0.5699999928474426,
+                    "PowerRating": 143
+                },
+                {
+                    "FromLevel": 4,
+                    "ToLevel": 5,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 96.5999984741211,
+                    "Range": 3.0999999046325685,
+                    "AttackIntervalSeconds": 0.550000011920929,
+                    "PowerRating": 171
+                },
+                {
+                    "FromLevel": 5,
+                    "ToLevel": 6,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 117.5999984741211,
+                    "Range": 3.200000047683716,
+                    "AttackIntervalSeconds": 0.5199999809265137,
+                    "PowerRating": 203
+                },
+                {
+                    "FromLevel": 6,
+                    "ToLevel": 7,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 142.8000030517578,
+                    "Range": 3.299999952316284,
+                    "AttackIntervalSeconds": 0.49000000953674319,
+                    "PowerRating": 238
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 30
+                },
+                {
+                    "RequiredLevel": 2,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 55
+                },
+                {
+                    "RequiredLevel": 3,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 90
+                },
+                {
+                    "RequiredLevel": 4,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 140
+                },
+                {
+                    "RequiredLevel": 5,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 200
+                },
+                {
+                    "RequiredLevel": 6,
+                    "ResultTowerId": "hero_warrior",
+                    "Currency": "Coins",
+                    "Cost": 275
+                }
+            ]
+        },
+        {
+            "Id": "tower_artillery_basic",
+            "DisplayNameKey": "Artillery Turret",
+            "DescriptionKey": "tower_artillery_basic_description",
+            "BehaviorId": "behavior_artillery_large_splash",
+            "TargetingMode": "Closest",
+            "BuildCost": 160,
+            "PowerCost": 5,
+            "Damage": 84.0,
+            "Range": 6.699999809265137,
+            "AttackIntervalSeconds": 2.0999999046325685,
+            "MaxLevel": 3,
+            "PowerRating": 176,
+            "PreferredEnemyTag": "armored",
+            "DamageType": "artillery",
+            "HasSplash": true,
+            "PrefabId": "prefab_tower_artillery_basic",
+            "IconId": "icon_tower_artillery_basic",
+            "UnlockCostCoins": 1200,
+            "LevelDisplayNames": [
+                "Artillery Turret",
+                "Artillery Turret 2",
+                "Artillery Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 240,
+                    "Damage": 126.0,
+                    "Range": 7.0,
+                    "AttackIntervalSeconds": 1.9500000476837159,
+                    "PowerRating": 255
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 360,
+                    "Damage": 188.0,
+                    "Range": 7.400000095367432,
+                    "AttackIntervalSeconds": 1.7999999523162842,
+                    "PowerRating": 370
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_cannon_basic",
+            "DisplayNameKey": "Cannon Turret",
+            "DescriptionKey": "tower_cannon_basic_description",
+            "BehaviorId": "behavior_projectile_splash",
+            "TargetingMode": "Closest",
+            "BuildCost": 80,
+            "PowerCost": 3,
+            "Damage": 28.0,
+            "Range": 4.5,
+            "AttackIntervalSeconds": 1.2000000476837159,
+            "MaxLevel": 3,
+            "PowerRating": 70,
+            "PreferredEnemyTag": "armored",
+            "DamageType": "cannon",
+            "HasSplash": true,
+            "PrefabId": "prefab_tower_cannon_basic",
+            "IconId": "icon_tower_cannon_basic",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Cannon Turret",
+                "Cannon Turret 2",
+                "Cannon Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 120,
+                    "Damage": 42.0,
+                    "Range": 4.800000190734863,
+                    "AttackIntervalSeconds": 1.100000023841858,
+                    "PowerRating": 98
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 4,
+                    "Damage": 66.0,
+                    "Range": 5.099999904632568,
+                    "AttackIntervalSeconds": 1.0,
+                    "PowerRating": 142
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "tower_cannon_shockwave",
+                    "Currency": "Coins",
+                    "Cost": 100
+                }
+            ]
+        },
+        {
+            "Id": "tower_cannon_shockwave",
+            "DisplayNameKey": "Cannon Shockwave",
+            "DescriptionKey": "tower_cannon_shockwave_description",
+            "BehaviorId": "behavior_projectile_shockwave",
+            "TargetingMode": "Closest",
+            "BuildCost": 0,
+            "PowerCost": 5,
+            "Damage": 72.0,
+            "Range": 5.400000095367432,
+            "AttackIntervalSeconds": 1.0499999523162842,
+            "MaxLevel": 3,
+            "PowerRating": 158,
+            "PreferredEnemyTag": "armored",
+            "DamageType": "cannon",
+            "HasSplash": true,
+            "PrefabId": "prefab_tower_cannon_shockwave",
+            "IconId": "icon_tower_cannon_shockwave",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Cannon Shockwave",
+                "Cannon Shockwave 2",
+                "Cannon Shockwave 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 6,
+                    "Damage": 102.0,
+                    "Range": 5.800000190734863,
+                    "AttackIntervalSeconds": 0.949999988079071,
+                    "PowerRating": 220
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_frost_basic",
+            "DisplayNameKey": "Frost Turret",
+            "DescriptionKey": "tower_frost_basic_description",
+            "BehaviorId": "behavior_frost_slow",
+            "TargetingMode": "Last",
+            "BuildCost": 70,
+            "PowerCost": 2,
+            "Damage": 14.0,
+            "Range": 5.699999809265137,
+            "AttackIntervalSeconds": 0.949999988079071,
+            "MaxLevel": 3,
+            "PowerRating": 58,
+            "PreferredEnemyTag": "swarm",
+            "DamageType": "frost",
+            "HasSplash": true,
+            "PrefabId": "prefab_tower_frost_basic",
+            "IconId": "icon_tower_frost_basic",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Frost Turret",
+                "Frost Turret 2",
+                "Frost Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 100,
+                    "Damage": 22.0,
+                    "Range": 6.0,
+                    "AttackIntervalSeconds": 0.8600000143051148,
+                    "PowerRating": 86
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 260,
+                    "Damage": 34.0,
+                    "Range": 6.300000190734863,
+                    "AttackIntervalSeconds": 0.7799999713897705,
+                    "PowerRating": 124
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_laser_basic",
+            "DisplayNameKey": "Laser Turret",
+            "DescriptionKey": "tower_laser_basic_description",
+            "BehaviorId": "behavior_laser_single_target",
+            "TargetingMode": "First",
+            "BuildCost": 50,
+            "PowerCost": 2,
+            "Damage": 12.0,
+            "Range": 5.5,
+            "AttackIntervalSeconds": 0.44999998807907107,
+            "MaxLevel": 3,
+            "PowerRating": 42,
+            "PreferredEnemyTag": "scout",
+            "DamageType": "laser",
+            "HasSplash": false,
+            "PrefabId": "prefab_tower_laser_basic",
+            "IconId": "icon_tower_laser_basic",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Laser Turret",
+                "Laser Turret 2",
+                "Laser Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 90,
+                    "Damage": 18.0,
+                    "Range": 5.800000190734863,
+                    "AttackIntervalSeconds": 0.4000000059604645,
+                    "PowerRating": 64
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 250,
+                    "Damage": 28.0,
+                    "Range": 6.099999904632568,
+                    "AttackIntervalSeconds": 0.3400000035762787,
+                    "PowerRating": 92
+                }
+            ],
+            "Merges": [
+                {
+                    "RequiredLevel": 1,
+                    "ResultTowerId": "tower_laser_overcharged",
+                    "Currency": "Coins",
+                    "Cost": 75
+                }
+            ]
+        },
+        {
+            "Id": "tower_laser_overcharged",
+            "DisplayNameKey": "Overcharged Laser",
+            "DescriptionKey": "tower_laser_overcharged_description",
+            "BehaviorId": "behavior_laser_chain_target",
+            "TargetingMode": "LowestHealth",
+            "BuildCost": 0,
+            "PowerCost": 4,
+            "Damage": 30.0,
+            "Range": 6.400000095367432,
+            "AttackIntervalSeconds": 0.2800000011920929,
+            "MaxLevel": 3,
+            "PowerRating": 130,
+            "PreferredEnemyTag": "swarm",
+            "DamageType": "laser",
+            "HasSplash": false,
+            "PrefabId": "prefab_tower_laser_overcharged",
+            "IconId": "icon_tower_laser_overcharged",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Overcharged Laser",
+                "Overcharged Laser 2",
+                "Overcharged Laser 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 400,
+                    "Damage": 44.0,
+                    "Range": 6.800000190734863,
+                    "AttackIntervalSeconds": 0.23999999463558198,
+                    "PowerRating": 184
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_poison_basic",
+            "DisplayNameKey": "Poison Turret",
+            "DescriptionKey": "tower_poison_basic_description",
+            "BehaviorId": "behavior_poison_damage_over_time",
+            "TargetingMode": "LowestHealth",
+            "BuildCost": 105,
+            "PowerCost": 3,
+            "Damage": 18.0,
+            "Range": 5.900000095367432,
+            "AttackIntervalSeconds": 0.699999988079071,
+            "MaxLevel": 3,
+            "PowerRating": 104,
+            "PreferredEnemyTag": "regenerator",
+            "DamageType": "poison",
+            "HasSplash": true,
+            "PrefabId": "prefab_tower_poison_basic",
+            "IconId": "icon_tower_poison_basic",
+            "UnlockCostCoins": 900,
+            "LevelDisplayNames": [
+                "Poison Turret",
+                "Poison Turret 2",
+                "Poison Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 160,
+                    "Damage": 29.0,
+                    "Range": 6.199999809265137,
+                    "AttackIntervalSeconds": 0.6399999856948853,
+                    "PowerRating": 152
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 235,
+                    "Damage": 43.0,
+                    "Range": 6.599999904632568,
+                    "AttackIntervalSeconds": 0.5799999833106995,
+                    "PowerRating": 218
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_sniper_basic",
+            "DisplayNameKey": "Sniper Turret",
+            "DescriptionKey": "tower_sniper_basic_description",
+            "BehaviorId": "behavior_sniper_precision",
+            "TargetingMode": "BossPriority",
+            "BuildCost": 120,
+            "PowerCost": 4,
+            "Damage": 55.0,
+            "Range": 8.199999809265137,
+            "AttackIntervalSeconds": 1.5499999523162842,
+            "MaxLevel": 3,
+            "PowerRating": 132,
+            "PreferredEnemyTag": "boss",
+            "DamageType": "pierce",
+            "HasSplash": false,
+            "PrefabId": "prefab_tower_sniper_basic",
+            "IconId": "icon_tower_sniper_basic",
+            "UnlockCostCoins": 650,
+            "LevelDisplayNames": [
+                "Sniper Turret",
+                "Sniper Turret 2",
+                "Sniper Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 180,
+                    "Damage": 82.0,
+                    "Range": 8.800000190734864,
+                    "AttackIntervalSeconds": 1.4199999570846558,
+                    "PowerRating": 190
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 260,
+                    "Damage": 124.0,
+                    "Range": 9.399999618530274,
+                    "AttackIntervalSeconds": 1.2799999713897706,
+                    "PowerRating": 275
+                }
+            ],
+            "Merges": []
+        },
+        {
+            "Id": "tower_tesla_basic",
+            "DisplayNameKey": "Tesla Turret",
+            "DescriptionKey": "tower_tesla_basic_description",
+            "BehaviorId": "behavior_tesla_chain",
+            "TargetingMode": "LowestHealth",
+            "BuildCost": 95,
+            "PowerCost": 3,
+            "Damage": 20.0,
+            "Range": 5.199999809265137,
+            "AttackIntervalSeconds": 0.800000011920929,
+            "MaxLevel": 3,
+            "PowerRating": 82,
+            "PreferredEnemyTag": "shielded",
+            "DamageType": "tesla",
+            "HasSplash": false,
+            "PrefabId": "prefab_tower_tesla_basic",
+            "IconId": "icon_tower_tesla_basic",
+            "UnlockCostCoins": 0,
+            "LevelDisplayNames": [
+                "Tesla Turret",
+                "Tesla Turret 2",
+                "Tesla Turret 3"
+            ],
+            "Upgrades": [
+                {
+                    "FromLevel": 1,
+                    "ToLevel": 2,
+                    "Currency": "Scrap",
+                    "Cost": 140,
+                    "Damage": 31.0,
+                    "Range": 5.599999904632568,
+                    "AttackIntervalSeconds": 0.7200000286102295,
+                    "PowerRating": 116
+                },
+                {
+                    "FromLevel": 2,
+                    "ToLevel": 3,
+                    "Currency": "Scrap",
+                    "Cost": 320,
+                    "Damage": 48.0,
+                    "Range": 6.0,
+                    "AttackIntervalSeconds": 0.6499999761581421,
+                    "PowerRating": 166
+                }
+            ],
+            "Merges": []
+        }
+    ],
+    "Enemies": [
+        {
+            "Id": "enemy_armored",
+            "DisplayNameKey": "Orc",
+            "MaxHealth": 140.0,
+            "MovementSpeed": 1.7000000476837159,
+            "ContactDamage": 2,
+            "RewardScrap": 12,
+            "ThreatValue": 3,
+            "EnemyTag": "orc",
+            "WeakToDamageType": "steel",
+            "PrefabId": "prefab_enemy_armored"
+        },
+        {
+            "Id": "enemy_boss",
+            "DisplayNameKey": "Runestone Troll",
+            "MaxHealth": 420.0,
+            "MovementSpeed": 1.100000023841858,
+            "ContactDamage": 6,
+            "RewardScrap": 35,
+            "ThreatValue": 8,
+            "EnemyTag": "boss_troll",
+            "WeakToDamageType": "holy",
+            "PrefabId": "prefab_enemy_boss"
+        },
+        {
+            "Id": "enemy_boss_warden",
+            "DisplayNameKey": "Thorn Warden",
+            "MaxHealth": 560.0,
+            "MovementSpeed": 0.949999988079071,
+            "ContactDamage": 8,
+            "RewardScrap": 45,
+            "ThreatValue": 10,
+            "EnemyTag": "boss_warden",
+            "WeakToDamageType": "shadow",
+            "PrefabId": "prefab_enemy_boss_warden"
+        },
+        {
+            "Id": "enemy_regenerator",
+            "DisplayNameKey": "Wolf",
+            "MaxHealth": 180.0,
+            "MovementSpeed": 1.5,
+            "ContactDamage": 3,
+            "RewardScrap": 16,
+            "ThreatValue": 4,
+            "EnemyTag": "wolf",
+            "WeakToDamageType": "piercing",
+            "PrefabId": "prefab_enemy_regenerator"
+        },
+        {
+            "Id": "enemy_scout",
+            "DisplayNameKey": "Goblin",
+            "MaxHealth": 50.0,
+            "MovementSpeed": 3.200000047683716,
+            "ContactDamage": 1,
+            "RewardScrap": 5,
+            "ThreatValue": 1,
+            "EnemyTag": "goblin",
+            "WeakToDamageType": "arcane",
+            "PrefabId": "prefab_enemy_scout"
+        },
+        {
+            "Id": "enemy_shielded",
+            "DisplayNameKey": "Orc Bulwark",
+            "MaxHealth": 95.0,
+            "MovementSpeed": 2.200000047683716,
+            "ContactDamage": 2,
+            "RewardScrap": 9,
+            "ThreatValue": 2,
+            "EnemyTag": "orc_elite",
+            "WeakToDamageType": "holy",
+            "PrefabId": "prefab_enemy_shielded"
+        },
+        {
+            "Id": "enemy_swarm",
+            "DisplayNameKey": "Rat",
+            "MaxHealth": 32.0,
+            "MovementSpeed": 4.199999809265137,
+            "ContactDamage": 1,
+            "RewardScrap": 4,
+            "ThreatValue": 1,
+            "EnemyTag": "rat",
+            "WeakToDamageType": "nature",
+            "PrefabId": "prefab_enemy_swarm"
+        }
+    ],
+    "Levels": [
+        {
+            "Id": "level_classic_001",
+            "DisplayNameKey": "Frozen Outpost",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 120,
+            "BaseHealth": 20,
+            "BuildSocketCount": 8,
+            "WaveSetId": "waves_classic_001",
+            "RewardScrap": 60,
+            "RewardCoins": 80,
+            "RewardGems": 0,
+            "RewardItemId": "module_laser_core"
+        },
+        {
+            "Id": "level_classic_002",
+            "DisplayNameKey": "Emerald Drift",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 135,
+            "BaseHealth": 24,
+            "BuildSocketCount": 6,
+            "WaveSetId": "waves_classic_002",
+            "RewardScrap": 80,
+            "RewardCoins": 110,
+            "RewardGems": 1,
+            "RewardItemId": "reactor_fragment"
+        },
+        {
+            "Id": "level_classic_003",
+            "DisplayNameKey": "Sands of Relay",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 150,
+            "BaseHealth": 28,
+            "BuildSocketCount": 7,
+            "WaveSetId": "waves_classic_003",
+            "RewardScrap": 95,
+            "RewardCoins": 140,
+            "RewardGems": 1,
+            "RewardItemId": "cannon_blueprint"
+        },
+        {
+            "Id": "level_classic_004",
+            "DisplayNameKey": "Void Crystal Rift",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 165,
+            "BaseHealth": 32,
+            "BuildSocketCount": 8,
+            "WaveSetId": "waves_classic_004",
+            "RewardScrap": 120,
+            "RewardCoins": 170,
+            "RewardGems": 2,
+            "RewardItemId": "shield_capacitor"
+        },
+        {
+            "Id": "level_classic_005",
+            "DisplayNameKey": "Forge Citadel",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 190,
+            "BaseHealth": 36,
+            "BuildSocketCount": 8,
+            "WaveSetId": "waves_classic_005",
+            "RewardScrap": 160,
+            "RewardCoins": 230,
+            "RewardGems": 3,
+            "RewardItemId": "commander_nova_badge"
+        },
+        {
+            "Id": "level_classic_006",
+            "DisplayNameKey": "Emberfall Pass",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 210,
+            "BaseHealth": 40,
+            "BuildSocketCount": 8,
+            "WaveSetId": "waves_classic_001",
+            "RewardScrap": 180,
+            "RewardCoins": 260,
+            "RewardGems": 3,
+            "RewardItemId": "ember_core"
+        },
+        {
+            "Id": "level_classic_007",
+            "DisplayNameKey": "Whispering Wilds",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 230,
+            "BaseHealth": 44,
+            "BuildSocketCount": 7,
+            "WaveSetId": "waves_classic_002",
+            "RewardScrap": 205,
+            "RewardCoins": 290,
+            "RewardGems": 4,
+            "RewardItemId": "wilds_relic"
+        },
+        {
+            "Id": "level_classic_008",
+            "DisplayNameKey": "Ashen Bastion",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 250,
+            "BaseHealth": 48,
+            "BuildSocketCount": 8,
+            "WaveSetId": "waves_classic_003",
+            "RewardScrap": 230,
+            "RewardCoins": 330,
+            "RewardGems": 4,
+            "RewardItemId": "bastion_plate"
+        },
+        {
+            "Id": "level_classic_009",
+            "DisplayNameKey": "Skybridge Ruins",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 275,
+            "BaseHealth": 52,
+            "BuildSocketCount": 9,
+            "WaveSetId": "waves_classic_004",
+            "RewardScrap": 260,
+            "RewardCoins": 370,
+            "RewardGems": 5,
+            "RewardItemId": "skybridge_core"
+        },
+        {
+            "Id": "level_classic_010",
+            "DisplayNameKey": "Crown of the Tempest",
+            "Mode": "ClassicPathDefense",
+            "StartingScrap": 300,
+            "BaseHealth": 58,
+            "BuildSocketCount": 9,
+            "WaveSetId": "waves_classic_005",
+            "RewardScrap": 300,
+            "RewardCoins": 450,
+            "RewardGems": 6,
+            "RewardItemId": "tempest_crown"
+        }
+    ],
+    "WaveSets": [
+        {
+            "Id": "waves_classic_001",
+            "Waves": [
+                {
+                    "Id": "wave_001",
+                    "StartDelaySeconds": 1.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 8,
+                            "IntervalSeconds": 0.800000011920929
+                        },
+                        {
+                            "EnemyId": "enemy_swarm",
+                            "Count": 6,
+                            "IntervalSeconds": 0.5
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_002",
+                    "StartDelaySeconds": 3.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 12,
+                            "IntervalSeconds": 0.6499999761581421
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 3,
+                            "IntervalSeconds": 1.600000023841858
+                        },
+                        {
+                            "EnemyId": "enemy_shielded",
+                            "Count": 4,
+                            "IntervalSeconds": 1.100000023841858
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_003",
+                    "StartDelaySeconds": 3.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 8,
+                            "IntervalSeconds": 1.2000000476837159
+                        },
+                        {
+                            "EnemyId": "enemy_regenerator",
+                            "Count": 2,
+                            "IntervalSeconds": 1.7000000476837159
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "waves_classic_002",
+            "Waves": [
+                {
+                    "Id": "wave_001",
+                    "StartDelaySeconds": 1.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 10,
+                            "IntervalSeconds": 0.699999988079071
+                        },
+                        {
+                            "EnemyId": "enemy_swarm",
+                            "Count": 8,
+                            "IntervalSeconds": 0.44999998807907107
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_002",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 12,
+                            "IntervalSeconds": 0.550000011920929
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 4,
+                            "IntervalSeconds": 1.350000023841858
+                        },
+                        {
+                            "EnemyId": "enemy_shielded",
+                            "Count": 5,
+                            "IntervalSeconds": 1.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "waves_classic_003",
+            "Waves": [
+                {
+                    "Id": "wave_001",
+                    "StartDelaySeconds": 1.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 14,
+                            "IntervalSeconds": 0.550000011920929
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_002",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 6,
+                            "IntervalSeconds": 1.2000000476837159
+                        },
+                        {
+                            "EnemyId": "enemy_regenerator",
+                            "Count": 3,
+                            "IntervalSeconds": 1.600000023841858
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_003",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 16,
+                            "IntervalSeconds": 0.44999998807907107
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 6,
+                            "IntervalSeconds": 1.100000023841858
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "waves_classic_004",
+            "Waves": [
+                {
+                    "Id": "wave_001",
+                    "StartDelaySeconds": 1.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 8,
+                            "IntervalSeconds": 1.0499999523162842
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_002",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 20,
+                            "IntervalSeconds": 0.3799999952316284
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 8,
+                            "IntervalSeconds": 1.0
+                        },
+                        {
+                            "EnemyId": "enemy_shielded",
+                            "Count": 6,
+                            "IntervalSeconds": 0.8999999761581421
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "waves_classic_005",
+            "Waves": [
+                {
+                    "Id": "wave_001",
+                    "StartDelaySeconds": 1.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 18,
+                            "IntervalSeconds": 0.41999998688697817
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 6,
+                            "IntervalSeconds": 1.0
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_002",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 12,
+                            "IntervalSeconds": 0.8999999761581421
+                        },
+                        {
+                            "EnemyId": "enemy_regenerator",
+                            "Count": 4,
+                            "IntervalSeconds": 1.2999999523162842
+                        }
+                    ]
+                },
+                {
+                    "Id": "wave_003",
+                    "StartDelaySeconds": 2.0,
+                    "Spawns": [
+                        {
+                            "EnemyId": "enemy_scout",
+                            "Count": 24,
+                            "IntervalSeconds": 0.3199999928474426
+                        },
+                        {
+                            "EnemyId": "enemy_armored",
+                            "Count": 12,
+                            "IntervalSeconds": 0.8500000238418579
+                        },
+                        {
+                            "EnemyId": "enemy_boss",
+                            "Count": 1,
+                            "IntervalSeconds": 1.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "ArenaRules": [
+        {
+            "Id": "arena_standard",
+            "BoardRows": 3,
+            "BoardColumns": 5,
+            "DeckSize": 5,
+            "StartingMana": 40,
+            "BaseSummonCost": 10,
+            "SummonCostStep": 10,
+            "MaximumMergeRank": 7,
+            "StrongholdLives": 3,
+            "BossIntervalSeconds": 90.0,
+            "MatchDurationSeconds": 300.0,
+            "EnemySpeedMultiplier": 0.5,
+            "EnemyHealthMultiplier": 0.6499999761581421,
+            "EnemyHealthPerWave": 0.07999999821186066,
+            "BossHealthMultiplier": 1.350000023841858,
+            "BaseSpawnIntervalSeconds": 2.4000000953674318,
+            "SpawnIntervalReductionPerWave": 0.05000000074505806,
+            "MinimumSpawnIntervalSeconds": 1.0,
+            "WolfIntroductionWave": 3,
+            "GoblinIntroductionWave": 5,
+            "OrcIntroductionWave": 7,
+            "VictoryRewardCoins": 120,
+            "DefeatRewardCoins": 35
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e09f980c3be71942b23e396b5335566, type: 3}
+  m_Name: level_classic_005
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.LevelDefinitionAsset
+  _id: level_classic_005
+  _displayNameKey: Forge Citadel
+  _mode: 0
+  _startingScrap: 190
+  _baseHealth: 36
+  _buildSocketCount: 8
+  _waveSet: {fileID: 11400000, guid: 8b364dc079d2f2648a0bb2535d3be7ea, type: 2}
+  _battlefieldLayout: {fileID: 11400000, guid: 2a8384754dc77d24193ac36777f4a658, type: 2}
+  _rewardScrap: 160
+  _rewardCoins: 230
+  _rewardGems: 3
+  _rewardItemId: commander_nova_badge

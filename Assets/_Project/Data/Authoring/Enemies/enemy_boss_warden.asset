@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc7706d59cc74241abb1c7e2eda95a8, type: 3}
+  m_Name: enemy_boss_warden
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.EnemyDefinitionAsset
+  _id: enemy_boss_warden
+  _displayNameKey: Thorn Warden
+  _prefabId: prefab_enemy_boss_warden
+  _prefab: {fileID: 5373440791039933660, guid: c221db5c3edaa5c42963eac807ab461f, type: 3}
+  _maxHealth: 560
+  _movementSpeed: 0.95
+  _contactDamage: 8
+  _rewardScrap: 45
+  _threatValue: 10
+  _enemyTag: boss_warden
+  _weakToDamageType: shadow

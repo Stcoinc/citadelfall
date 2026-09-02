@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: hero_druid
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: hero_druid
+  _displayNameKey: Druid
+  _descriptionKey: Nature specialist whose splash magic finishes weakened enemy groups.
+  _behaviorId: behavior_nature_hero
+  _prefabId: prefab_hero_defender
+  _iconId: icon_hero_druid
+  _icon: {fileID: 6326996002646427601, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
+  _prefab: {fileID: 8006705434921343632, guid: 9e8d44d67a290134f8172703dcda8f47, type: 3}
+  _targetingMode: 3
+  _buildCost: 55
+  _powerCost: 0
+  _damage: 19
+  _range: 5.2
+  _attackIntervalSeconds: 0.7
+  _maxLevel: 7
+  _powerRating: 74
+  _preferredEnemyTag: all
+  _damageType: nature
+  _hasSplash: 1
+  _unlockCostCoins: 0
+  _levelDisplayNames:
+  - Druid
+  - Druid 2
+  - Druid 3
+  - Druid 4
+  - Druid 5
+  - Druid 6
+  - Druid 7
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 60
+    Damage: 23.8
+    Range: 5.4
+    AttackIntervalSeconds: 0.67
+    PowerRating: 92
+  - FromLevel: 2
+    ToLevel: 3
+    Currency: 0
+    Cost: 90
+    Damage: 29.4
+    Range: 5.5
+    AttackIntervalSeconds: 0.64
+    PowerRating: 114
+  - FromLevel: 3
+    ToLevel: 4
+    Currency: 0
+    Cost: 130
+    Damage: 36.1
+    Range: 5.7
+    AttackIntervalSeconds: 0.62
+    PowerRating: 139
+  - FromLevel: 4
+    ToLevel: 5
+    Currency: 0
+    Cost: 180
+    Damage: 43.7
+    Range: 5.8
+    AttackIntervalSeconds: 0.59
+    PowerRating: 167
+  - FromLevel: 5
+    ToLevel: 6
+    Currency: 0
+    Cost: 240
+    Damage: 53.2
+    Range: 6
+    AttackIntervalSeconds: 0.56
+    PowerRating: 199
+  - FromLevel: 6
+    ToLevel: 7
+    Currency: 0
+    Cost: 320
+    Damage: 64.6
+    Range: 6.1
+    AttackIntervalSeconds: 0.53
+    PowerRating: 234
+  _merges:
+  - RequiredLevel: 1
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 30
+  - RequiredLevel: 2
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 55
+  - RequiredLevel: 3
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 90
+  - RequiredLevel: 4
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 140
+  - RequiredLevel: 5
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 200
+  - RequiredLevel: 6
+    ResultTowerId: hero_druid
+    Currency: 1
+    Cost: 275

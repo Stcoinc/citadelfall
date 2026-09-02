@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff1ac2dfb966af439bbe623c61b6b52, type: 3}
+  m_Name: tower_cannon_shockwave
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerDefinitionAsset
+  _id: tower_cannon_shockwave
+  _displayNameKey: Cannon Shockwave
+  _descriptionKey: tower_cannon_shockwave_description
+  _behaviorId: behavior_projectile_shockwave
+  _prefabId: prefab_tower_cannon_shockwave
+  _iconId: icon_tower_cannon_shockwave
+  _icon: {fileID: 0}
+  _prefab: {fileID: 0}
+  _targetingMode: 2
+  _buildCost: 0
+  _powerCost: 5
+  _damage: 72
+  _range: 5.4
+  _attackIntervalSeconds: 1.05
+  _maxLevel: 3
+  _powerRating: 158
+  _preferredEnemyTag: armored
+  _damageType: cannon
+  _hasSplash: 1
+  _unlockCostCoins: 0
+  _levelDisplayNames:
+  - Cannon Shockwave
+  - Cannon Shockwave 2
+  - Cannon Shockwave 3
+  _upgrades:
+  - FromLevel: 1
+    ToLevel: 2
+    Currency: 0
+    Cost: 6
+    Damage: 102
+    Range: 5.8
+    AttackIntervalSeconds: 0.95
+    PowerRating: 220
+  _merges: []
