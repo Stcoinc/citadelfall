@@ -31,6 +31,7 @@ MonoBehaviour:
   _preferredEnemyTag: armored
   _damageType: cannon
   _hasSplash: 1
+  _shouldRotate: 1
   _unlockCostCoins: 0
   _levelDisplayNames:
   - Cannon Shockwave

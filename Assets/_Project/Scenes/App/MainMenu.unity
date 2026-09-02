@@ -13374,15 +13374,15 @@ RectTransform:
   - {fileID: 161992156}
   - {fileID: 1795851272}
   - {fileID: 554187442}
-  - {fileID: 1939741474}
-  - {fileID: 40703972}
-  - {fileID: 2096167024}
   - {fileID: 499310114}
   - {fileID: 1562278802}
   - {fileID: 1515431510}
   - {fileID: 1893372757}
   - {fileID: 1797657430}
   - {fileID: 1855733730}
+  - {fileID: 1939741474}
+  - {fileID: 40703972}
+  - {fileID: 2096167024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

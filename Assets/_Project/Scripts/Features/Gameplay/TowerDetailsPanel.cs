@@ -94,6 +94,43 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             SetText(_sellButtonText, BuildSellButtonText(selectedSocket));
         }
 
+        public void ShowBuildPreview(TowerDefinition definition, int buildCost, string actionMessage = null)
+        {
+            var state = definition == null ? null : new TowerInstanceState(definition.Id, 1);
+            var stats = _statsPresenter.BuildStats(definition, state);
+
+            if (stats == null)
+            {
+                Hide();
+                return;
+            }
+
+            _selectedSocket?.HideRangeIndicator();
+            _selectedSocket = null;
+            _selectedEnemy = null;
+            SetPanelActive(true);
+            SetText(_nameText, stats.DisplayNameKey);
+            SetText(_levelText, $"Preview Level {stats.Level}/{stats.MaxLevel}");
+            SetText(_powerText, $"Power {stats.PowerRating}");
+            SetText(_attackText, $"Attack {stats.Damage:0.#}");
+            SetText(_rangeText, $"Range {stats.Range:0.#}");
+            SetText(_attackSpeedText, $"Interval {stats.AttackIntervalSeconds:0.##}s");
+            SetText(_targetingText, $"Targeting {stats.TargetingMode}");
+            SetText(_preferredEnemyText, $"Type {stats.DamageType} / Weak target {stats.PreferredEnemyTag}");
+            SetText(_splashText, stats.HasSplash ? "Splash: Yes" : "Splash: No");
+            SetText(_upgradeText, BuildUpgradeText(definition, state));
+            SetText(_mergeText, BuildMergeText(definition, state));
+            SetText(_actionMessageText, string.IsNullOrWhiteSpace(actionMessage)
+                ? $"Choose a socket to place this unit. Cost {FormatBuildCost(buildCost)}."
+                : actionMessage);
+            SetButtonInteractable(_upgradeButton, false);
+            SetButtonInteractable(_mergeButton, false);
+            SetButtonInteractable(_sellButton, false);
+            SetText(_upgradeButtonText, "UPGRADE\nPLACE FIRST");
+            SetText(_mergeButtonText, "MERGE\nPLACE FIRST");
+            SetText(_sellButtonText, "SELL\nPLACE FIRST");
+        }
+
         public void ShowEnemy(EnemyAgent enemy)
         {
             if (enemy == null || enemy.Definition == null)
@@ -297,6 +334,11 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             return socket == null
                 ? "SELL\nScrap 0"
                 : $"SELL\nScrap {socket.SellRefundAmount}";
+        }
+
+        private static string FormatBuildCost(int buildCost)
+        {
+            return buildCost <= 0 ? "Free" : $"{buildCost} Scrap";
         }
 
         private static TowerUpgradeDefinition FindUpgrade(TowerDefinition definition, TowerInstanceState state)

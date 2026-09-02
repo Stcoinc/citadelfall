@@ -1,4 +1,6 @@
 using ClubGamerZone.TowerDefense.Application.Configuration.Dtos;
+using ClubGamerZone.TowerDefense.Application.Configuration;
+using ClubGamerZone.TowerDefense.Core;
 using ClubGamerZone.TowerDefense.Features.Gameplay;
 using NUnit.Framework;
 using UnityEngine;
@@ -65,6 +67,104 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
             {
                 Object.DestroyImmediate(layout);
             }
+        }
+
+        [Test]
+        public void StarterContentCatalogBuilder_PreservesHeroRotationPreference()
+        {
+            var content = new StarterContentDto
+            {
+                SchemaVersion = 1,
+                ContentVersion = "test",
+                Towers = new[]
+                {
+                    new TowerDto
+                    {
+                        Id = "hero_warrior",
+                        DisplayNameKey = "Warrior",
+                        DescriptionKey = "Frontline defender",
+                        BehaviorId = "behavior_steel_hero",
+                        TargetingMode = "Closest",
+                        BuildCost = 60,
+                        PowerCost = 0,
+                        Damage = 42f,
+                        Range = 2.8f,
+                        AttackIntervalSeconds = 0.65f,
+                        MaxLevel = 7,
+                        PowerRating = 78,
+                        PreferredEnemyTag = "all",
+                        DamageType = "steel",
+                        HasSplash = false,
+                        ShouldRotate = false,
+                        PrefabId = "prefab_hero_defender",
+                        IconId = "icon_hero_warrior",
+                        UnlockCostCoins = 0
+                    }
+                },
+                Enemies = new[]
+                {
+                    new EnemyDto
+                    {
+                        Id = "enemy_rat",
+                        DisplayNameKey = "Rat",
+                        MaxHealth = 12f,
+                        MovementSpeed = 1f,
+                        ContactDamage = 1,
+                        RewardScrap = 1,
+                        ThreatValue = 1,
+                        EnemyTag = "swarm",
+                        WeakToDamageType = "steel",
+                        PrefabId = "prefab_enemy_rat"
+                    }
+                },
+                WaveSets = new[]
+                {
+                    new WaveSetDto
+                    {
+                        Id = "waves_test",
+                        Waves = new[]
+                        {
+                            new WaveDto
+                            {
+                                Id = "wave_test",
+                                StartDelaySeconds = 0f,
+                                Spawns = new[]
+                                {
+                                    new WaveSpawnDto
+                                    {
+                                        EnemyId = "enemy_rat",
+                                        Count = 1,
+                                        IntervalSeconds = 1f
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                Levels = new[]
+                {
+                    new LevelDto
+                    {
+                        Id = "level_test",
+                        DisplayNameKey = "Test",
+                        Mode = "ClassicPathDefense",
+                        StartingScrap = 100,
+                        BaseHealth = 20,
+                        BuildSocketCount = 1,
+                        WaveSetId = "waves_test",
+                        RewardScrap = 1,
+                        RewardCoins = 1,
+                        RewardGems = 0,
+                        RewardItemId = string.Empty
+                    }
+                }
+            };
+            var builder = new StarterContentCatalogBuilder(new StarterContentValidator(new ContentValidationLimits()));
+
+            var result = builder.Build(content);
+
+            Assert.That(result.Validation.IsValid, Is.True);
+            Assert.That(result.Catalog.Towers[new StableId("hero_warrior")].ShouldRotate, Is.False);
         }
     }
 }

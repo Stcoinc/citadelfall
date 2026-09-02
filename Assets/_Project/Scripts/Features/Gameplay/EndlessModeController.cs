@@ -37,6 +37,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             _gameplayController.EndlessDefeated += HandleDefeat;
             _gameplayController.EnemyDefeated += HandleEnemyDefeated;
             _gameplayController.CurrencyChanged += HandleCurrencyChanged;
+            _gameplayController.PlacementStateChanged += RefreshHud;
         }
 
         private void Start()
@@ -65,6 +66,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             _gameplayController.EndlessDefeated -= HandleDefeat;
             _gameplayController.EnemyDefeated -= HandleEnemyDefeated;
             _gameplayController.CurrencyChanged -= HandleCurrencyChanged;
+            _gameplayController.PlacementStateChanged -= RefreshHud;
         }
 
         public void StartNextWave()
@@ -135,6 +137,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             slot.CurrenciesInitialized = true;
             _saveSlots.Save(slot);
             AppRuntimeSession.SetPlayerCurrencies(slot.Scrap, slot.Coins);
+            RefreshHud();
             QueueAccountSave();
         }
 

@@ -7178,6 +7178,7 @@ MonoBehaviour:
   _victoryRewardsText: {fileID: 856364791}
   _defeatPanel: {fileID: 512437718}
   _defeatSummaryText: {fileID: 1624877993}
+  _startWavesButton: {fileID: 1519247728}
 --- !u!4 &604269550
 Transform:
   m_ObjectHideFlags: 0
@@ -12578,6 +12579,7 @@ MonoBehaviour:
   _coinsValueText: {fileID: 1720657177}
   _waveValueText: {fileID: 705192963}
   _enemiesValueText: {fileID: 1318011356}
+  _detailsPanel: {fileID: 1310082082}
   _towerOptionButtons:
   - {fileID: 95872079}
   - {fileID: 406402031}
@@ -14736,7 +14738,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1101186441
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1720657174

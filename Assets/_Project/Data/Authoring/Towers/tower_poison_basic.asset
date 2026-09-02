@@ -31,6 +31,7 @@ MonoBehaviour:
   _preferredEnemyTag: regenerator
   _damageType: poison
   _hasSplash: 1
+  _shouldRotate: 1
   _unlockCostCoins: 900
   _levelDisplayNames:
   - Poison Turret

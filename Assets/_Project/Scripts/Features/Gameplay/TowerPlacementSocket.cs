@@ -329,6 +329,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 _detailsPanel.Hide();
             }
 
+            _towerBuilt?.Invoke();
             Debug.Log($"Sold tower at {name} for {refund} Scrap.");
             return true;
         }
@@ -493,6 +494,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             {
                 renderer.color = new Color(1f, 0.82f, 0.25f, 1f);
             }
+
+            _activeTower.GetComponent<TowerAttackAnimator>()?.CaptureCurrentVisualState();
         }
 
         private void ClearTower()
@@ -610,6 +613,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             {
                 TransformWorldScaleUtility.SetUniform(_activeTower.transform, HeroPlacementScale);
             }
+
+            _activeTower.GetComponent<TowerAttackAnimator>()?.CaptureCurrentVisualState();
         }
 
         private static Color GetTowerColor(string damageType)

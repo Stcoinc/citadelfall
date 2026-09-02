@@ -15,7 +15,7 @@ The project first established a reusable classic tower-defense engine with autho
 Therefore:
 
 - **Arena** owns five-hero decks, random mana summons, the 3 x 5 formation, merge ranks, deterministic short matches, and future equivalent-board versus play.
-- **Adventure Defense** owns direct hero choice, Scrap placement, authored mission paths/sockets, upgrades, selling, longer waves, and campaign-map progression.
+- **Adventure Defense** owns direct hero choice, Scrap placement, authored mission paths/sockets, pre-placement unit stat previews, upgrades, selling, longer waves, and campaign-map progression.
 - Both reuse the application shell, account/profile, unlocks, durable currencies, enemies, heroes, combat services, content pipeline, and Firebase-compatible settings.
 - Arena is the feature priority. Adventure is maintained as a secondary offline mode and creator-engine proof, not developed as a competing main product.
 
@@ -30,7 +30,9 @@ An Arena match is designed for a three-to-five-minute session:
 5. Two copies of the same hero at the same merge rank can merge into one stronger copy.
 6. Enemy waves grow in pressure, with a boss approximately every 90 seconds.
 7. The stronghold begins with mode-specific health or lives. A match ends on stronghold defeat or the configured time/result condition.
-8. When the stronghold reaches zero in any mode, show an authored Game Over panel with Restart and Main Menu actions.
+8. Direct-placement modes show the selected unit's level-1 stats in the details panel before placement.
+9. Direct-placement waves cannot start until at least one unit has been placed on the field.
+10. When the stronghold reaches zero in any mode, show an authored Game Over panel with Restart and Main Menu actions.
 
 The first six hero families are Mage, Warrior, Paladin, Archer, Druid, and Sorcerer. The first enemy families are Rat, Wolf, quick Goblin, and strong Orc. Existing tower/enemy IDs continue working while this content is migrated safely.
 
@@ -118,8 +120,12 @@ The fantasy enemy-presentation slice is now implemented. Arena selects only Rat,
 
 Hero combat readability and the first deterministic match-completion slice are now implemented. Arcane, steel, holy, piercing, nature, and shadow attacks have distinct projectile/impact palettes and scales while numeric stats remain data-driven. Hero selection, socket placement, and enemy pressure use separate seed-derived random streams, so player summons cannot alter the shared enemy sequence. The scene-authored result panel reports wave, defeats, summons, merges, and leaks, with replay and menu actions. A first-match message tutorial teaches mana summons, rising cost, matching-rank merges, and stronghold defense, then persists completion when a save slot is active.
 
+Hero character readability now also separates unit facing from attack feedback. Each tower/hero definition has a remotely-compatible `ShouldRotate` flag: current hero defenders do not rotate toward enemies, while legacy mechanical tower compatibility content can still rotate. The shared defender prefab contains an authored `TowerAttackAnimator` that plays a short attack motion on every hit/shot, choosing melee, holy, archer, arcane, nature, shadow, or mechanical recoil presentation from the unit identity/damage type.
+
 Arena now reuses the permanent application shell instead of bypassing it: `Intro -> MainMenu -> LevelSelection/profile -> CitadelFallArena`. The same Level Selection scene continues to own New Game/Continue and adventure-map selection. Arena victories and defeats grant remotely configurable coin rewards, persist match/victory/defeat totals locally, and mirror currencies plus enemy progression to authenticated Firebase profiles.
 
 All gameplay modes now have an authored stronghold-defeat presentation. Adventure Defense receives the shared `MvpGameplayController.Defeat` event and opens `Gameplay.unity > Full Game Canvas > Game Over Panel`, with Restart and Main Menu buttons. Endless Defense keeps its scene-authored `Endless Defeat Panel` and adds an authored Restart button beside Main Menu. Arena already uses its authored result panel for both victory and stronghold defeat.
+
+Adventure and Endless direct-placement UX now shows selected-unit stats before placement. `MvpGameplayController` sends the current build option to `TowerDetailsPanel.ShowBuildPreview`, which shows level-1 damage, range, interval, targeting, type, upgrade path, merge path, and cost while disabling Upgrade, Merge, and Sell until the unit is actually placed. Wave-start buttons are also gated by `MvpGameplayController.CanStartWave`, so players cannot begin a wave with an empty field.
 
 The next implementation slice is deeper combat and fair progression: explicit boss mechanics/telegraphs, deterministic tick-based wave events and replay records, and a collection/deck hub centered on the reused Level Selection flow.

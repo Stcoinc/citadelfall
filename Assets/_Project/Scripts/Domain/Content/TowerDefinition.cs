@@ -27,7 +27,8 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             int unlockCostCoins,
             IReadOnlyList<TowerUpgradeDefinition> upgrades,
             IReadOnlyList<TowerMergeDefinition> merges,
-            IReadOnlyList<string> levelDisplayNames = null)
+            IReadOnlyList<string> levelDisplayNames = null,
+            bool shouldRotate = true)
         {
             Id = id;
             DisplayNameKey = displayNameKey;
@@ -44,6 +45,7 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             PreferredEnemyTag = preferredEnemyTag;
             DamageType = damageType;
             HasSplash = hasSplash;
+            ShouldRotate = shouldRotate;
             PrefabId = prefabId;
             IconId = iconId;
             UnlockCostCoins = unlockCostCoins;
@@ -81,6 +83,8 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
         public string DamageType { get; }
 
         public bool HasSplash { get; }
+
+        public bool ShouldRotate { get; }
 
         public string PrefabId { get; }
 

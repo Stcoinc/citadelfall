@@ -20,6 +20,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         [SerializeField] private TMP_Text _victoryRewardsText;
         [SerializeField] private GameObject _defeatPanel;
         [SerializeField] private TMP_Text _defeatSummaryText;
+        [SerializeField] private Button _startWavesButton;
 
         private readonly LocalSaveSlotRepository _saveSlots = new LocalSaveSlotRepository();
         private readonly List<LevelDefinition> _levels = new List<LevelDefinition>();
@@ -35,6 +36,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 _gameplayController.Defeat += HandleMissionDefeat;
                 _gameplayController.EnemyDefeated += HandleEnemyDefeated;
                 _gameplayController.CurrencyChanged += HandleCurrencyChanged;
+                _gameplayController.PlacementStateChanged += RefreshStartButton;
             }
         }
 
@@ -58,6 +60,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 _gameplayController.Resume();
                 _gameplayController.LoadMission(AppRuntimeSession.SelectedLevelId, AppRuntimeSession.ActiveContentJson);
             }
+
+            RefreshStartButton();
         }
 
         private void OnDestroy()
@@ -68,6 +72,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 _gameplayController.Defeat -= HandleMissionDefeat;
                 _gameplayController.EnemyDefeated -= HandleEnemyDefeated;
                 _gameplayController.CurrencyChanged -= HandleCurrencyChanged;
+                _gameplayController.PlacementStateChanged -= RefreshStartButton;
             }
         }
 
@@ -77,6 +82,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             {
                 _gameplayController.StartWavesPressed();
             }
+
+            RefreshStartButton();
         }
 
         public void TogglePause()
@@ -204,6 +211,14 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             _saveSlots.Save(slot);
             AppRuntimeSession.SetPlayerCurrencies(slot.Scrap, slot.Coins);
             QueueAccountProgressionSave();
+        }
+
+        private void RefreshStartButton()
+        {
+            if (_startWavesButton != null && _gameplayController != null)
+            {
+                _startWavesButton.interactable = _gameplayController.CanStartWave;
+            }
         }
 
         private void QueueAccountProgressionSave()

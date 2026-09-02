@@ -30,6 +30,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         [SerializeField] private string _preferredEnemyTag = "scout";
         [SerializeField] private string _damageType = "laser";
         [SerializeField] private bool _hasSplash;
+        [SerializeField] private bool _shouldRotate = true;
 
         [Header("Economy")]
         [SerializeField] private int _unlockCostCoins;
@@ -67,6 +68,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 PreferredEnemyTag = _preferredEnemyTag,
                 DamageType = _damageType,
                 HasSplash = _hasSplash,
+                ShouldRotate = _shouldRotate,
                 PrefabId = _prefabId,
                 IconId = _iconId,
                 UnlockCostCoins = _unlockCostCoins,

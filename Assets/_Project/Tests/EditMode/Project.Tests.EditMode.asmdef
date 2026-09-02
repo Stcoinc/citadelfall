@@ -6,7 +6,8 @@
     "Project.Domain",
     "Project.Application",
     "Project.Infrastructure",
-    "Project.Features.Gameplay"
+    "Project.Features.Gameplay",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [
     "Editor"

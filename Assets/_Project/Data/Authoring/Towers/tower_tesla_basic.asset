@@ -31,6 +31,7 @@ MonoBehaviour:
   _preferredEnemyTag: shielded
   _damageType: tesla
   _hasSplash: 0
+  _shouldRotate: 1
   _unlockCostCoins: 0
   _levelDisplayNames:
   - Tesla Turret

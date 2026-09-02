@@ -20,6 +20,7 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration.Dtos
         public string PreferredEnemyTag;
         public string DamageType;
         public bool HasSplash;
+        public bool ShouldRotate = true;
         public string PrefabId;
         public string IconId;
         public int UnlockCostCoins;

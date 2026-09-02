@@ -66,7 +66,8 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 tower.UnlockCostCoins,
                 tower.Upgrades == null ? Array.Empty<TowerUpgradeDefinition>() : tower.Upgrades.Select(BuildUpgrade).ToArray(),
                 tower.Merges == null ? Array.Empty<TowerMergeDefinition>() : tower.Merges.Select(BuildMerge).ToArray(),
-                tower.LevelDisplayNames ?? Array.Empty<string>());
+                tower.LevelDisplayNames ?? Array.Empty<string>(),
+                tower.ShouldRotate);
         }
 
         private static TowerUpgradeDefinition BuildUpgrade(TowerUpgradeDto upgrade)

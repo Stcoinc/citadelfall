@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 522710091739560429}
   - component: {fileID: 6037406490310222999}
   - component: {fileID: 8419319303548214293}
+  - component: {fileID: 7524319082356462211}
   m_Layer: 0
   m_Name: TowerLaserPlaceholder
   m_TagString: Untagged
@@ -171,3 +172,22 @@ MonoBehaviour:
   - {fileID: 5189695305162111521, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
   - {fileID: 6326996002646427601, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
   - {fileID: -6813865010122789510, guid: 721b8b927c6865742aa29187178e1c2a, type: 3}
+--- !u!114 &7524319082356462211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8006705434921343632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88a5ddd405256444a88ed6a73f4eb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.TowerAttackAnimator
+  _spriteRenderer: {fileID: 522710091739560429}
+  _style: 0
+  _durationSeconds: 0.18
+  _scalePunch: 0.18
+  _lungeDistance: 0.1
+  _liftDistance: 0.04
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}

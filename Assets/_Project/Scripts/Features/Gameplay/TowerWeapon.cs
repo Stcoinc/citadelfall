@@ -22,6 +22,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         private EnemyRegistry _enemyRegistry;
         private float _cooldownRemaining;
         private EnemyAgent _currentTarget;
+        private TowerAttackAnimator _attackAnimator;
 
         public TowerDefinition Definition => _definition;
 
@@ -42,6 +43,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             _enemyRegistry = enemyRegistry ?? throw new ArgumentNullException(nameof(enemyRegistry));
             _cooldownRemaining = 0f;
             _currentTarget = null;
+            _attackAnimator = GetComponent<TowerAttackAnimator>();
+            _attackAnimator?.Configure(definition);
         }
 
         private void Update()
@@ -58,7 +61,12 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 return;
             }
 
-            RotateToward(_currentTarget.transform.position);
+            var targetDirection = _currentTarget.transform.position - transform.position;
+            if (_definition.ShouldRotate)
+            {
+                RotateToward(_currentTarget.transform.position);
+            }
+
             _cooldownRemaining -= Time.deltaTime;
 
             if (_cooldownRemaining > 0f)
@@ -66,12 +74,14 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 return;
             }
 
-            FireAt(_currentTarget);
+            FireAt(_currentTarget, targetDirection);
             _cooldownRemaining = _stats.AttackIntervalSeconds;
         }
 
-        private void FireAt(EnemyAgent target)
+        private void FireAt(EnemyAgent target, Vector3 targetDirection)
         {
+            _attackAnimator?.PlayAttack(targetDirection);
+
             if (_projectilePrefab == null)
             {
                 ApplyInstantDamage(target);

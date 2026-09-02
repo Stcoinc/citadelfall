@@ -223,6 +223,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
             var effectiveDefinition = CreateRankedDefinition(_definition, _mergeRank);
             _activeHero.GetComponent<TurretSpriteAnimator>()?.SetTower(effectiveDefinition);
+            _activeHero.GetComponent<TowerAttackAnimator>()?.CaptureCurrentVisualState();
             _activeWeapon = _activeHero.GetComponent<TowerWeapon>();
             _activeWeapon?.Initialize(
                 effectiveDefinition,
@@ -274,7 +275,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 source.UnlockCostCoins,
                 source.Upgrades,
                 source.Merges,
-                source.LevelDisplayNames);
+                source.LevelDisplayNames,
+                source.ShouldRotate);
         }
     }
 }

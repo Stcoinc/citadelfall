@@ -29,6 +29,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         [SerializeField] private TMP_Text _coinsValueText;
         [SerializeField] private TMP_Text _waveValueText;
         [SerializeField] private TMP_Text _enemiesValueText;
+        [SerializeField] private TowerDetailsPanel _detailsPanel;
         [SerializeField] private Button[] _towerOptionButtons;
         [SerializeField] private TMP_Text[] _towerOptionLabels;
         [SerializeField] private Image[] _towerOptionFrames;
@@ -74,6 +75,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
         public event Action EndlessDefeated;
 
+        public event Action PlacementStateChanged;
+
         public MissionOutcome Outcome => _missionState == null ? MissionOutcome.Running : _missionState.Outcome;
 
         public int RemainingBaseHealth => _missionState == null ? 0 : _missionState.BaseHealth;
@@ -90,7 +93,12 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
         public int EndlessScore => _endlessScore;
 
-        public bool CanStartEndlessWave => _endlessMode && !_wavesStarted && _missionState != null && _missionState.Outcome == MissionOutcome.Running;
+        public bool CanStartWave => !_wavesStarted &&
+                                    _missionState != null &&
+                                    _missionState.Outcome == MissionOutcome.Running &&
+                                    HasPlacedTower();
+
+        public bool CanStartEndlessWave => _endlessMode && CanStartWave;
 
         private void Start()
         {
@@ -274,6 +282,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
             UpdateSelectedTowerLabel();
             RefreshTowerBuildBar();
+            ShowSelectedTowerPreview();
 
             if (_autoBuildFirstTower && _towerSockets != null && _towerSockets.Length > 0 && _towerSockets[0] != null)
             {
@@ -281,6 +290,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             }
 
             UpdateStatus();
+            PlacementStateChanged?.Invoke();
         }
 
         public void StartWavesPressed()
@@ -359,10 +369,11 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             ApplySelectedTowerToSockets();
             UpdateSelectedTowerLabel();
             RefreshTowerSelection();
-            ReportStatus(
-                IsFirstWarriorFree(tower)
-                    ? $"Selected {tower.DisplayNameKey}. Your first Warrior is free. Strong vs {tower.PreferredEnemyTag}."
-                    : $"Selected {tower.DisplayNameKey}. Cost {tower.BuildCost} Scrap. Strong vs {tower.PreferredEnemyTag}.");
+            var message = IsFirstWarriorFree(tower)
+                ? $"Selected {tower.DisplayNameKey}. Your first Warrior is free. Strong vs {tower.PreferredEnemyTag}."
+                : $"Selected {tower.DisplayNameKey}. Cost {tower.BuildCost} Scrap. Strong vs {tower.PreferredEnemyTag}.";
+            ShowSelectedTowerPreview(message);
+            ReportStatus(message);
         }
 
         public void SelectTowerOption0()
@@ -526,6 +537,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         {
             RefreshTowerBuildBar();
             UpdateSelectedTowerLabel();
+            PlacementStateChanged?.Invoke();
         }
 
         private void AddScrap(int amount)
@@ -717,6 +729,19 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             _selectedTowerText.text =
                 $"Selected: {_selectedTowerDefinition.DisplayNameKey} | " +
                 $"{_selectedTowerDefinition.DamageType} | Cost {costText}";
+        }
+
+        private void ShowSelectedTowerPreview(string message = null)
+        {
+            if (_detailsPanel == null || _selectedTowerDefinition == null)
+            {
+                return;
+            }
+
+            var buildCost = IsFirstWarriorFree(_selectedTowerDefinition)
+                ? 0
+                : _selectedTowerDefinition.BuildCost;
+            _detailsPanel.ShowBuildPreview(_selectedTowerDefinition, buildCost, message);
         }
 
         private void SpawnEnemy(EnemyDefinition enemyDefinition)

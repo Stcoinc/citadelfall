@@ -10035,6 +10035,7 @@ MonoBehaviour:
   _coinsValueText: {fileID: 1720657177}
   _waveValueText: {fileID: 705192963}
   _enemiesValueText: {fileID: 1318011356}
+  _detailsPanel: {fileID: 1310082082}
   _towerOptionButtons:
   - {fileID: 95872079}
   - {fileID: 406402031}

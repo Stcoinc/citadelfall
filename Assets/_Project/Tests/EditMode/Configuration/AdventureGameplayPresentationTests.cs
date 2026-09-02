@@ -4,7 +4,9 @@ using ClubGamerZone.TowerDefense.Core;
 using ClubGamerZone.TowerDefense.Domain.Content;
 using ClubGamerZone.TowerDefense.Features.Gameplay;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
 {
@@ -97,6 +99,65 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
         }
 
         [Test]
+        public void ShowBuildPreview_DisplaysLevelOneStatsButDisablesPlacedUnitActions()
+        {
+            var panelRoot = new GameObject("Details Root");
+            var panelObject = new GameObject("Details Controller", typeof(TowerDetailsPanel));
+            var nameObject = new GameObject("Name", typeof(TextMeshProUGUI));
+            var levelObject = new GameObject("Level", typeof(TextMeshProUGUI));
+            var actionObject = new GameObject("Action", typeof(TextMeshProUGUI));
+            var upgradeButtonObject = new GameObject("Upgrade Button", typeof(Button));
+            var mergeButtonObject = new GameObject("Merge Button", typeof(Button));
+            var sellButtonObject = new GameObject("Sell Button", typeof(Button));
+            var upgradeButtonTextObject = new GameObject("Upgrade Button Text", typeof(TextMeshProUGUI));
+            var mergeButtonTextObject = new GameObject("Merge Button Text", typeof(TextMeshProUGUI));
+            var sellButtonTextObject = new GameObject("Sell Button Text", typeof(TextMeshProUGUI));
+
+            try
+            {
+                var panel = panelObject.GetComponent<TowerDetailsPanel>();
+                SetPrivateField(panel, "_panelRoot", panelRoot);
+                SetPrivateField(panel, "_nameText", nameObject.GetComponent<TextMeshProUGUI>());
+                SetPrivateField(panel, "_levelText", levelObject.GetComponent<TextMeshProUGUI>());
+                SetPrivateField(panel, "_actionMessageText", actionObject.GetComponent<TextMeshProUGUI>());
+                SetPrivateField(panel, "_upgradeButton", upgradeButtonObject.GetComponent<Button>());
+                SetPrivateField(panel, "_mergeButton", mergeButtonObject.GetComponent<Button>());
+                SetPrivateField(panel, "_sellButton", sellButtonObject.GetComponent<Button>());
+                SetPrivateField(panel, "_upgradeButtonText", upgradeButtonTextObject.GetComponent<TextMeshProUGUI>());
+                SetPrivateField(panel, "_mergeButtonText", mergeButtonTextObject.GetComponent<TextMeshProUGUI>());
+                SetPrivateField(panel, "_sellButtonText", sellButtonTextObject.GetComponent<TextMeshProUGUI>());
+
+                panelRoot.SetActive(false);
+                panel.ShowBuildPreview(CreateTowerDefinition(), 35);
+
+                Assert.That(panelRoot.activeSelf, Is.True);
+                Assert.That(nameObject.GetComponent<TextMeshProUGUI>().text, Is.EqualTo("Warrior"));
+                Assert.That(levelObject.GetComponent<TextMeshProUGUI>().text, Is.EqualTo("Preview Level 1/7"));
+                Assert.That(actionObject.GetComponent<TextMeshProUGUI>().text, Does.Contain("Cost 35 Scrap"));
+                Assert.That(upgradeButtonObject.GetComponent<Button>().interactable, Is.False);
+                Assert.That(mergeButtonObject.GetComponent<Button>().interactable, Is.False);
+                Assert.That(sellButtonObject.GetComponent<Button>().interactable, Is.False);
+                Assert.That(upgradeButtonTextObject.GetComponent<TextMeshProUGUI>().text, Does.Contain("PLACE FIRST"));
+                Assert.That(mergeButtonTextObject.GetComponent<TextMeshProUGUI>().text, Does.Contain("PLACE FIRST"));
+                Assert.That(sellButtonTextObject.GetComponent<TextMeshProUGUI>().text, Does.Contain("PLACE FIRST"));
+            }
+            finally
+            {
+                Object.DestroyImmediate(panelRoot);
+                Object.DestroyImmediate(panelObject);
+                Object.DestroyImmediate(nameObject);
+                Object.DestroyImmediate(levelObject);
+                Object.DestroyImmediate(actionObject);
+                Object.DestroyImmediate(upgradeButtonObject);
+                Object.DestroyImmediate(mergeButtonObject);
+                Object.DestroyImmediate(sellButtonObject);
+                Object.DestroyImmediate(upgradeButtonTextObject);
+                Object.DestroyImmediate(mergeButtonTextObject);
+                Object.DestroyImmediate(sellButtonTextObject);
+            }
+        }
+
+        [Test]
         public void ArenaSelection_ShowsAndHidesConfiguredHeroRange()
         {
             var socketObject = new GameObject("Arena Socket", typeof(SpriteRenderer), typeof(BoxCollider2D), typeof(ArenaHeroSocket));
@@ -157,7 +218,9 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                 "icon_hero_warrior",
                 0,
                 new List<TowerUpgradeDefinition>(),
-                new List<TowerMergeDefinition>());
+                new List<TowerMergeDefinition>(),
+                null,
+                false);
         }
 
         private static void SetPrivateField(object target, string fieldName, object value)

@@ -31,6 +31,7 @@ MonoBehaviour:
   _preferredEnemyTag: all
   _damageType: arcane
   _hasSplash: 1
+  _shouldRotate: 0
   _unlockCostCoins: 0
   _levelDisplayNames:
   - Mage
