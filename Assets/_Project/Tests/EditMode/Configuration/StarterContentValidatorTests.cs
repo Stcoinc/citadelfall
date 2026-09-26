@@ -1,4 +1,6 @@
+using System;
 using System.IO;
+using System.Linq;
 using ClubGamerZone.TowerDefense.Application.Configuration;
 using ClubGamerZone.TowerDefense.Core;
 using ClubGamerZone.TowerDefense.Infrastructure.Json;
@@ -39,6 +41,16 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
             Assert.That(result.Catalog.Enemies[new StableId("enemy_armored")].DisplayNameKey, Is.EqualTo("Orc"));
             Assert.That(result.Catalog.Enemies.ContainsKey(new StableId("enemy_boss_warden")), Is.True);
             Assert.That(result.Catalog.Levels.ContainsKey(new StableId("level_classic_001")), Is.True);
+            Assert.That(result.Catalog.WaveSets[new StableId("waves_classic_005")].HasBoss, Is.True);
+            Assert.That(result.Catalog.WaveSets[new StableId("waves_classic_010")].HasBoss, Is.True);
+            Assert.That(result.Catalog.WaveSets[new StableId("waves_classic_001")].HasBoss, Is.False);
+            Assert.That(result.Catalog.Battlefields.Count, Is.GreaterThanOrEqualTo(10));
+            Assert.That(
+                result.Catalog.Levels[new StableId("level_classic_001")].BattlefieldId,
+                Is.EqualTo(new StableId("battlefield_level_001")));
+            Assert.That(
+                result.Catalog.Battlefields[new StableId("battlefield_level_010")].BackgroundId,
+                Is.EqualTo("background_tempest_boss"));
             Assert.That(result.Catalog.Levels.ContainsKey(new StableId("level_ship_001")), Is.True);
             Assert.That(result.Catalog.ArenaRules.ContainsKey(new StableId("arena_standard")), Is.True);
             Assert.That(result.Catalog.ArenaRules[new StableId("arena_standard")].SocketCount, Is.EqualTo(15));
@@ -132,6 +144,80 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
 
             Assert.That(result.IsValid, Is.False);
             Assert.That(HasIssueAt(result, "$.Towers[0].Merges[0].ResultTowerId"), Is.True);
+        }
+
+        [Test]
+        public void CampaignBossWaveSets_AreExplicitAndEndWithBoss()
+        {
+            var content = LoadStarterContent();
+            var expectedBossLevels = new[]
+            {
+                new { LevelId = "level_classic_005", WaveSetId = "waves_classic_005", BossId = "enemy_boss" },
+                new { LevelId = "level_classic_010", WaveSetId = "waves_classic_010", BossId = "enemy_boss_warden" }
+            };
+
+            foreach (var expected in expectedBossLevels)
+            {
+                var level = content.Levels.Single(candidate => candidate.Id == expected.LevelId);
+                Assert.That(level.WaveSetId, Is.EqualTo(expected.WaveSetId));
+
+                var waveSet = content.WaveSets.Single(candidate => candidate.Id == expected.WaveSetId);
+                Assert.That(waveSet.HasBoss, Is.True);
+                var finalSpawn = waveSet.Waves.Last().Spawns.Last();
+                Assert.That(finalSpawn.EnemyId, Is.EqualTo(expected.BossId));
+                Assert.That(finalSpawn.Count, Is.EqualTo(1));
+                Assert.That(
+                    waveSet.Waves.SelectMany(wave => wave.Spawns).Count(spawn => spawn.EnemyId == expected.BossId),
+                    Is.EqualTo(1));
+            }
+
+            var bossWaveSetIds = expectedBossLevels.Select(expected => expected.WaveSetId).ToArray();
+            Assert.That(
+                content.Levels
+                    .Where(level => level.Id != "level_classic_005" && level.Id != "level_classic_010")
+                    .All(level => !bossWaveSetIds.Contains(level.WaveSetId)),
+                Is.True);
+            Assert.That(
+                content.WaveSets.Where(waveSet => !bossWaveSetIds.Contains(waveSet.Id)).All(waveSet => !waveSet.HasBoss),
+                Is.True);
+        }
+
+        [Test]
+        public void Validate_HasBossWithoutFinalBoss_ReturnsCreatorFacingError()
+        {
+            var content = LoadStarterContent();
+            var waveSet = content.WaveSets.Single(candidate => candidate.Id == "waves_classic_001");
+            waveSet.HasBoss = true;
+
+            var result = CreateValidator().Validate(content);
+
+            Assert.That(result.IsValid, Is.False);
+            Assert.That(HasIssueAt(result, "$.WaveSets[0].HasBoss"), Is.True);
+        }
+
+        [Test]
+        public void Validate_BossSpawnWithoutHasBoss_ReturnsCreatorFacingError()
+        {
+            var content = LoadStarterContent();
+            var bossWaveSetIndex = Array.FindIndex(content.WaveSets, candidate => candidate.Id == "waves_classic_005");
+            content.WaveSets[bossWaveSetIndex].HasBoss = false;
+
+            var result = CreateValidator().Validate(content);
+
+            Assert.That(result.IsValid, Is.False);
+            Assert.That(HasIssueAt(result, $"$.WaveSets[{bossWaveSetIndex}].HasBoss"), Is.True);
+        }
+
+        [Test]
+        public void Validate_UnknownBattlefieldReference_ReturnsCreatorFacingError()
+        {
+            var content = LoadStarterContent();
+            content.Levels[0].BattlefieldId = "battlefield_missing";
+
+            var result = CreateValidator().Validate(content);
+
+            Assert.That(result.IsValid, Is.False);
+            Assert.That(HasIssueAt(result, "$.Levels[0].BattlefieldId"), Is.True);
         }
 
         private static StarterContentValidator CreateValidator()

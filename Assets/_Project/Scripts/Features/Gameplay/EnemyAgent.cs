@@ -26,6 +26,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
         public float Health => _health;
 
+        public bool IsTargetable => !_isResolved && !_isDying && _definition != null && _health > 0f;
+
         public float PathProgress => _totalPathDistance <= 0f ? 0f : Mathf.Clamp01(_distanceTravelled / _totalPathDistance);
 
         public void Initialize(EnemyDefinition definition, Transform[] pathPoints)

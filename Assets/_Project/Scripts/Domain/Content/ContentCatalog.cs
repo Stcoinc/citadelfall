@@ -10,6 +10,7 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             string contentVersion,
             IReadOnlyDictionary<StableId, TowerDefinition> towers,
             IReadOnlyDictionary<StableId, EnemyDefinition> enemies,
+            IReadOnlyDictionary<StableId, BattlefieldDefinition> battlefields,
             IReadOnlyDictionary<StableId, LevelDefinition> levels,
             IReadOnlyDictionary<StableId, WaveSetDefinition> waveSets,
             IReadOnlyDictionary<StableId, ArenaRulesDefinition> arenaRules)
@@ -18,6 +19,7 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             ContentVersion = contentVersion;
             Towers = towers;
             Enemies = enemies;
+            Battlefields = battlefields;
             Levels = levels;
             WaveSets = waveSets;
             ArenaRules = arenaRules;
@@ -30,6 +32,8 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
         public IReadOnlyDictionary<StableId, TowerDefinition> Towers { get; }
 
         public IReadOnlyDictionary<StableId, EnemyDefinition> Enemies { get; }
+
+        public IReadOnlyDictionary<StableId, BattlefieldDefinition> Battlefields { get; }
 
         public IReadOnlyDictionary<StableId, LevelDefinition> Levels { get; }
 

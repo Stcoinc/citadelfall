@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: waves_classic_005
   m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.WaveSetDefinitionAsset
   _id: waves_classic_005
+  _hasBoss: 1
   _waves:
   - _id: wave_001
     _startDelaySeconds: 1

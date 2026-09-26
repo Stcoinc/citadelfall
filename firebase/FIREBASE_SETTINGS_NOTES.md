@@ -34,7 +34,11 @@ The same versioned `starterContent` snapshot supplies both gameplay styles:
 - Citadel Fall Arena reads hero/enemy content plus `ArenaRules` for deck size, mana, summon growth, merge limits, lives, cadence, duration, and rewards.
 - Adventure Defense reads hero/enemy/wave/level content for direct placement, authored mission waves, upgrades, selling, and mission rewards.
 
-Scene geometry remains local and authored. Firebase must not move Arena sockets, Adventure paths/sockets, cameras, or UI during runtime, and downloaded values must not mutate an active match snapshot.
+Scene geometry remains locally authored. Firebase must not create hierarchy objects or move Arena sockets, Endless geometry, cameras, or UI. Adventure schema 2 battlefield values may reposition and activate only the existing serialized path/socket pool before mission initialization, and downloaded values must never mutate an active match snapshot.
+
+Adventure campaign content now uses a validated authored-geometry pool. Schema 2 `starterContent` contains a `Battlefields` array with stable IDs, background IDs, path coordinates, and build-socket coordinates; each level selects one with `BattlefieldId`. The client applies those values only to the pre-authored `Gameplay.unity` path and socket objects before a mission begins. Counts and coordinate magnitudes are validated, excess positions are rejected or ignored safely, and active matches remain immutable. A `BackgroundId` selects a sprite serialized in the Gameplay controller; Firebase JSON does not deliver arbitrary image files.
+
+Schema 3 makes boss placement explicit through `WaveSets[].HasBoss`; the client does not derive boss status from level position. When true, validation requires exactly one boss-tagged spawn group at the end of the final wave with count 1. When false, validation rejects boss-tagged spawns. Any future level can reference a boss-enabled wave set. The current Map 1 Level 5 uses `waves_classic_005` with the Runestone Troll, and Map 2 Level 5/global Level 10 uses `waves_classic_010` with the Thorn Warden.
 
 Arena enemy difficulty is controlled independently through validated `ArenaRules` fields for movement/health multipliers, health growth, boss health, spawn cadence, and Wolf/Goblin/Orc introduction waves. See `Assets/_Project/Docs/BALANCE.md` before publishing changes. Missing fields from an older compatible payload resolve to safe local Arena defaults.
 

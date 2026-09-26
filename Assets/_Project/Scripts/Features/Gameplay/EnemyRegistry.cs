@@ -36,7 +36,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         {
             var sqrRange = range * range;
             var enemiesInRange = _enemies
-                .Where(enemy => enemy != null)
+                .Where(enemy => enemy != null && enemy.IsTargetable)
                 .Where(enemy => (enemy.transform.position - origin).sqrMagnitude <= sqrRange)
                 .ToList();
 
@@ -74,7 +74,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             var sqrRadius = radius * radius;
             var splashDamage = primaryDamage * Mathf.Clamp01(splashDamageMultiplier);
             var targets = _enemies
-                .Where(enemy => enemy != null)
+                .Where(enemy => enemy != null && enemy.IsTargetable)
                 .Where(enemy => (enemy.transform.position - origin).sqrMagnitude <= sqrRadius)
                 .ToList();
 

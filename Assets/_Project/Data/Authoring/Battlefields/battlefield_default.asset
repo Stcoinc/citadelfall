@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: battlefield_default
   m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.BattlefieldLayoutAsset
   _id: battlefield_default
+  _backgroundId: background_forest_dawn
   _pathPoints:
   - {x: -8.79, y: 0.98}
   - {x: -4.51, y: 1.12}
@@ -20,6 +21,12 @@ MonoBehaviour:
   - {x: -1.74, y: 1.97}
   - {x: -2.08, y: -0.54}
   - {x: -0.09, y: -0.65}
+  - {x: 0.29, y: 2.01}
+  - {x: 1.77, y: 2.1}
+  - {x: 2.37, y: 0.43}
+  - {x: 6.02, y: 0.94}
+  - {x: 5.58, y: -2.07}
+  - {x: 9.43, y: -4.28}
   _buildSocketPositions:
   - {x: -6.76, y: -0.15}
   - {x: -3.14, y: 0.75}
@@ -27,3 +34,9 @@ MonoBehaviour:
   - {x: -0.71, y: 1.12}
   - {x: 2.44, y: -1.03}
   - {x: 3.79, y: 2.12}
+  - {x: 1.26, y: 3.47}
+  - {x: 4.9, y: -0.26}
+  - {x: 4.69, y: -3.21}
+  - {x: -1.28, y: 3.47}
+  - {x: -7.01, y: 2.2}
+  - {x: -4.9, y: 3.28}

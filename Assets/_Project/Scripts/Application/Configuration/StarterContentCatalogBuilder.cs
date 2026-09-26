@@ -26,6 +26,8 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
 
             var towers = content.Towers.ToDictionary(tower => new StableId(tower.Id), BuildTower);
             var enemies = content.Enemies.ToDictionary(enemy => new StableId(enemy.Id), BuildEnemy);
+            var battlefields = (content.Battlefields ?? Array.Empty<BattlefieldDto>())
+                .ToDictionary(battlefield => new StableId(battlefield.Id), BuildBattlefield);
             var levels = content.Levels.ToDictionary(level => new StableId(level.Id), BuildLevel);
             var waveSets = content.WaveSets.ToDictionary(waveSet => new StableId(waveSet.Id), BuildWaveSet);
             var arenaRules = (content.ArenaRules ?? Array.Empty<ArenaRulesDto>())
@@ -36,6 +38,7 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 content.ContentVersion,
                 towers,
                 enemies,
+                battlefields,
                 levels,
                 waveSets,
                 arenaRules);
@@ -116,6 +119,7 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 level.StartingScrap,
                 level.BaseHealth,
                 level.BuildSocketCount,
+                new StableId(level.BattlefieldId),
                 new StableId(level.WaveSetId),
                 level.RewardScrap,
                 level.RewardCoins,
@@ -123,10 +127,24 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 level.RewardItemId);
         }
 
+        private static BattlefieldDefinition BuildBattlefield(BattlefieldDto battlefield)
+        {
+            return new BattlefieldDefinition(
+                new StableId(battlefield.Id),
+                battlefield.BackgroundId,
+                (battlefield.PathPoints ?? Array.Empty<BattlefieldPointDto>())
+                    .Select(point => new BattlefieldPoint(point.X, point.Y))
+                    .ToArray(),
+                (battlefield.BuildSocketPositions ?? Array.Empty<BattlefieldPointDto>())
+                    .Select(point => new BattlefieldPoint(point.X, point.Y))
+                    .ToArray());
+        }
+
         private static WaveSetDefinition BuildWaveSet(WaveSetDto waveSet)
         {
             return new WaveSetDefinition(
                 new StableId(waveSet.Id),
+                waveSet.HasBoss,
                 waveSet.Waves.Select(BuildWave).ToArray());
         }
 

@@ -80,6 +80,7 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                 100,
                 40,
                 6,
+                new StableId("battlefield_forest_001"),
                 new StableId("waves_forest_001"),
                 160,
                 230,
@@ -196,6 +197,77 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
             }
         }
 
+        [Test]
+        public void ApplyBattlefieldLayoutPreview_AppliesConfiguredBackground()
+        {
+            var controllerObject = new GameObject("Gameplay Controller", typeof(MvpGameplayController));
+            var backgroundObject = new GameObject("Battlefield Background", typeof(SpriteRenderer));
+            var layout = ScriptableObject.CreateInstance<BattlefieldLayoutAsset>();
+            var texture = new Texture2D(2, 2);
+            var sprite = Sprite.Create(texture, new Rect(0f, 0f, 2f, 2f), new Vector2(0.5f, 0.5f));
+
+            try
+            {
+                var controller = controllerObject.GetComponent<MvpGameplayController>();
+                var background = backgroundObject.GetComponent<SpriteRenderer>();
+                var binding = new GameplayBackgroundBinding();
+                var tint = new Color(0.75f, 0.85f, 1f, 1f);
+                SetPrivateField(binding, "_id", "background_level_002");
+                SetPrivateField(binding, "_sprite", sprite);
+                SetPrivateField(binding, "_tint", tint);
+                SetPrivateField(controller, "_battlefieldBackground", background);
+                SetPrivateField(controller, "_backgroundBindings", new[] { binding });
+                SetPrivateField(controller, "_pathPoints", System.Array.Empty<Transform>());
+                SetPrivateField(controller, "_towerSockets", System.Array.Empty<TowerPlacementSocket>());
+                layout.Configure(
+                    "battlefield_level_002",
+                    "background_level_002",
+                    System.Array.Empty<Vector2>(),
+                    System.Array.Empty<Vector2>());
+
+                controller.ApplyBattlefieldLayoutPreview(layout);
+
+                Assert.That(background.sprite, Is.SameAs(sprite));
+                Assert.That(background.color, Is.EqualTo(tint));
+            }
+            finally
+            {
+                Object.DestroyImmediate(sprite);
+                Object.DestroyImmediate(texture);
+                Object.DestroyImmediate(layout);
+                Object.DestroyImmediate(backgroundObject);
+                Object.DestroyImmediate(controllerObject);
+            }
+        }
+
+        [Test]
+        public void EnemyRegistry_SkipsEnemyAsSoonAsDeathAnimationStarts()
+        {
+            var enemyObject = new GameObject("Enemy", typeof(SpriteRenderer), typeof(EnemySpriteAnimator), typeof(EnemyAgent));
+            var pathObject = new GameObject("Path Point");
+
+            try
+            {
+                var enemy = enemyObject.GetComponent<EnemyAgent>();
+                var registry = new EnemyRegistry();
+                enemy.Initialize(CreateEnemyDefinition(), new[] { pathObject.transform });
+                registry.Register(enemy);
+
+                Assert.That(enemy.IsTargetable, Is.True);
+                Assert.That(registry.FindTarget(Vector3.zero, 10f, TargetingMode.First), Is.SameAs(enemy));
+
+                enemy.ApplyDamage(enemy.Health);
+
+                Assert.That(enemy.IsTargetable, Is.False, "Lethal damage must stop new attacks before the death animation finishes.");
+                Assert.That(registry.FindTarget(Vector3.zero, 10f, TargetingMode.First), Is.Null);
+            }
+            finally
+            {
+                Object.DestroyImmediate(pathObject);
+                Object.DestroyImmediate(enemyObject);
+            }
+        }
+
         private static TowerDefinition CreateTowerDefinition()
         {
             return new TowerDefinition(
@@ -221,6 +293,21 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                 new List<TowerMergeDefinition>(),
                 null,
                 false);
+        }
+
+        private static EnemyDefinition CreateEnemyDefinition()
+        {
+            return new EnemyDefinition(
+                new StableId("enemy_rat"),
+                "Rat",
+                10f,
+                1f,
+                1,
+                1,
+                1,
+                "rat",
+                "steel",
+                "prefab_enemy_rat");
         }
 
         private static void SetPrivateField(object target, string fieldName, object value)

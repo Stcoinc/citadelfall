@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ClubGamerZone.TowerDefense.Application.Configuration.Dtos;
 using ClubGamerZone.TowerDefense.Core;
 using ClubGamerZone.TowerDefense.Domain.Content;
@@ -28,8 +29,9 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
             ValidateTowers(content.Towers, issues);
             ValidateTowerReferences(content.Towers, issues);
             ValidateEnemies(content.Enemies, issues);
-            ValidateWaveSets(content.WaveSets, content.Enemies, issues);
-            ValidateLevels(content.Levels, content.WaveSets, issues);
+            ValidateWaveSets(content.WaveSets, content.Enemies, content.SchemaVersion >= 3, issues);
+            ValidateBattlefields(content.Battlefields, content.SchemaVersion >= 2, issues);
+            ValidateLevels(content.Levels, content.WaveSets, content.Battlefields, content.SchemaVersion >= 2, issues);
             ValidateArenaRules(content.ArenaRules, issues);
 
             return new ValidationResult(issues);
@@ -263,7 +265,11 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
             }
         }
 
-        private void ValidateWaveSets(WaveSetDto[] waveSets, EnemyDto[] enemies, List<ValidationIssue> issues)
+        private void ValidateWaveSets(
+            WaveSetDto[] waveSets,
+            EnemyDto[] enemies,
+            bool bossDeclarationRequired,
+            List<ValidationIssue> issues)
         {
             if (waveSets == null || waveSets.Length == 0)
             {
@@ -277,6 +283,14 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
             }
 
             var enemyIds = BuildValidIdSet(enemies);
+            var bossEnemyIds = new HashSet<string>(
+                (enemies ?? Array.Empty<EnemyDto>())
+                    .Where(enemy => enemy != null &&
+                                    StableId.IsValid(enemy.Id) &&
+                                    !string.IsNullOrWhiteSpace(enemy.EnemyTag) &&
+                                    enemy.EnemyTag.StartsWith("boss", StringComparison.OrdinalIgnoreCase))
+                    .Select(enemy => enemy.Id),
+                StringComparer.Ordinal);
             var waveSetIds = new HashSet<string>(StringComparer.Ordinal);
             for (var i = 0; i < waveSets.Length; i++)
             {
@@ -290,6 +304,58 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
 
                 ValidateStableId(waveSet.Id, $"{path}.Id", waveSetIds, issues);
                 ValidateWaves(waveSet.Waves, enemyIds, $"{path}.Waves", issues);
+                if (bossDeclarationRequired)
+                {
+                    ValidateBossDeclaration(waveSet, bossEnemyIds, path, issues);
+                }
+            }
+        }
+
+        private static void ValidateBossDeclaration(
+            WaveSetDto waveSet,
+            HashSet<string> bossEnemyIds,
+            string path,
+            List<ValidationIssue> issues)
+        {
+            var waves = waveSet.Waves ?? Array.Empty<WaveDto>();
+            var bossSpawns = waves
+                .SelectMany((wave, waveIndex) => (wave?.Spawns ?? Array.Empty<WaveSpawnDto>())
+                    .Select((spawn, spawnIndex) => new { WaveIndex = waveIndex, SpawnIndex = spawnIndex, Spawn = spawn }))
+                .Where(entry => entry.Spawn != null && bossEnemyIds.Contains(entry.Spawn.EnemyId))
+                .ToArray();
+
+            if (!waveSet.HasBoss)
+            {
+                if (bossSpawns.Length > 0)
+                {
+                    issues.Add(Error($"{path}.HasBoss", "HasBoss must be enabled when the wave set contains a boss-tagged enemy."));
+                }
+
+                return;
+            }
+
+            if (bossSpawns.Length != 1)
+            {
+                issues.Add(Error($"{path}.HasBoss", "A boss wave set must contain exactly one boss spawn group."));
+                return;
+            }
+
+            var bossSpawn = bossSpawns[0];
+            var finalWaveIndex = waves.Length - 1;
+            var finalSpawns = finalWaveIndex >= 0
+                ? waves[finalWaveIndex]?.Spawns ?? Array.Empty<WaveSpawnDto>()
+                : Array.Empty<WaveSpawnDto>();
+            var finalSpawnIndex = finalSpawns.Length - 1;
+            if (bossSpawn.WaveIndex != finalWaveIndex || bossSpawn.SpawnIndex != finalSpawnIndex)
+            {
+                issues.Add(Error($"{path}.Waves", "The boss must be the final spawn group of the final wave."));
+            }
+
+            if (bossSpawn.Spawn.Count != 1)
+            {
+                issues.Add(Error(
+                    $"{path}.Waves[{bossSpawn.WaveIndex}].Spawns[{bossSpawn.SpawnIndex}].Count",
+                    "A boss spawn group must have Count 1."));
             }
         }
 
@@ -357,7 +423,94 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
             }
         }
 
-        private void ValidateLevels(LevelDto[] levels, WaveSetDto[] waveSets, List<ValidationIssue> issues)
+        private void ValidateBattlefields(BattlefieldDto[] battlefields, bool required, List<ValidationIssue> issues)
+        {
+            if (battlefields == null || battlefields.Length == 0)
+            {
+                if (required)
+                {
+                    issues.Add(Error("$.Battlefields", "At least one battlefield is required for schema version 2."));
+                }
+
+                return;
+            }
+
+            if (battlefields.Length > _limits.MaximumBattlefields)
+            {
+                issues.Add(Error("$.Battlefields", $"Battlefield count cannot exceed {_limits.MaximumBattlefields}."));
+            }
+
+            var ids = new HashSet<string>(StringComparer.Ordinal);
+            for (var i = 0; i < battlefields.Length; i++)
+            {
+                var battlefield = battlefields[i];
+                var path = $"$.Battlefields[{i}]";
+                if (battlefield == null)
+                {
+                    issues.Add(Error(path, "Battlefield entry cannot be null."));
+                    continue;
+                }
+
+                ValidateStableId(battlefield.Id, $"{path}.Id", ids, issues);
+                ValidateStableId(battlefield.BackgroundId, $"{path}.BackgroundId", null, issues);
+                ValidateBattlefieldPoints(
+                    battlefield.PathPoints,
+                    2,
+                    _limits.MaximumPathPointsPerBattlefield,
+                    $"{path}.PathPoints",
+                    issues);
+                ValidateBattlefieldPoints(
+                    battlefield.BuildSocketPositions,
+                    1,
+                    _limits.MaximumBuildSocketsPerBattlefield,
+                    $"{path}.BuildSocketPositions",
+                    issues);
+            }
+        }
+
+        private void ValidateBattlefieldPoints(
+            BattlefieldPointDto[] points,
+            int minimumCount,
+            int maximumCount,
+            string path,
+            List<ValidationIssue> issues)
+        {
+            if (points == null || points.Length < minimumCount || points.Length > maximumCount)
+            {
+                issues.Add(Error(path, $"Point count must be between {minimumCount} and {maximumCount}."));
+                return;
+            }
+
+            for (var i = 0; i < points.Length; i++)
+            {
+                var point = points[i];
+                if (point == null)
+                {
+                    issues.Add(Error($"{path}[{i}]", "Point cannot be null."));
+                    continue;
+                }
+
+                ValidateFloatRange(
+                    point.X,
+                    -_limits.MaximumBattlefieldCoordinateMagnitude,
+                    _limits.MaximumBattlefieldCoordinateMagnitude,
+                    $"{path}[{i}].X",
+                    issues);
+                ValidateFloatRange(
+                    point.Y,
+                    -_limits.MaximumBattlefieldCoordinateMagnitude,
+                    _limits.MaximumBattlefieldCoordinateMagnitude,
+                    $"{path}[{i}].Y",
+                    issues);
+            }
+        }
+
+        private void ValidateLevels(
+            LevelDto[] levels,
+            WaveSetDto[] waveSets,
+            BattlefieldDto[] battlefields,
+            bool battlefieldRequired,
+            List<ValidationIssue> issues)
         {
             if (levels == null || levels.Length == 0)
             {
@@ -371,6 +524,11 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
             }
 
             var waveSetIds = BuildValidIdSet(waveSets);
+            var battlefieldIds = BuildValidIdSet(battlefields);
+            var battlefieldById = (battlefields ?? Array.Empty<BattlefieldDto>())
+                .Where(battlefield => battlefield != null && StableId.IsValid(battlefield.Id))
+                .GroupBy(battlefield => battlefield.Id)
+                .ToDictionary(group => group.Key, group => group.First(), StringComparer.Ordinal);
             var levelIds = new HashSet<string>(StringComparer.Ordinal);
             for (var i = 0; i < levels.Length; i++)
             {
@@ -388,6 +546,20 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 ValidateIntRange(level.StartingScrap, 0, _limits.MaximumCost, $"{path}.StartingScrap", issues);
                 ValidateIntRange(level.BaseHealth, 1, (int)_limits.MaximumHealth, $"{path}.BaseHealth", issues);
                 ValidateIntRange(level.BuildSocketCount, 1, 1000, $"{path}.BuildSocketCount", issues);
+                if (battlefieldRequired || !string.IsNullOrWhiteSpace(level.BattlefieldId))
+                {
+                    ValidateStableId(level.BattlefieldId, $"{path}.BattlefieldId", null, issues);
+                    if (!string.IsNullOrWhiteSpace(level.BattlefieldId) && !battlefieldIds.Contains(level.BattlefieldId))
+                    {
+                        issues.Add(Error($"{path}.BattlefieldId", $"Unknown battlefield id '{level.BattlefieldId}'."));
+                    }
+                    else if (battlefieldById.TryGetValue(level.BattlefieldId, out var battlefield) &&
+                             battlefield.BuildSocketPositions != null &&
+                             level.BuildSocketCount > battlefield.BuildSocketPositions.Length)
+                    {
+                        issues.Add(Error($"{path}.BuildSocketCount", "Build socket count exceeds the referenced battlefield layout."));
+                    }
+                }
                 ValidateIntRange(level.RewardScrap, 0, _limits.MaximumCost, $"{path}.RewardScrap", issues);
                 ValidateIntRange(level.RewardCoins, 0, _limits.MaximumCost, $"{path}.RewardCoins", issues);
                 ValidateIntRange(level.RewardGems, 0, _limits.MaximumCost, $"{path}.RewardGems", issues);
@@ -491,6 +663,25 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
                 if (waveSet != null && StableId.IsValid(waveSet.Id))
                 {
                     ids.Add(waveSet.Id);
+                }
+            }
+
+            return ids;
+        }
+
+        private static HashSet<string> BuildValidIdSet(BattlefieldDto[] battlefields)
+        {
+            var ids = new HashSet<string>(StringComparer.Ordinal);
+            if (battlefields == null)
+            {
+                return ids;
+            }
+
+            foreach (var battlefield in battlefields)
+            {
+                if (battlefield != null && StableId.IsValid(battlefield.Id))
+                {
+                    ids.Add(battlefield.Id);
                 }
             }
 

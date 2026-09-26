@@ -87,3 +87,12 @@ Opening reference values:
 - Preserve deterministic selection: balance changes may alter the eligible pool or numeric rules but must not couple enemy randomness to hero summons or socket selection.
 - Apply remote balance only when starting a new match; never mutate an active match snapshot.
 - Re-test new-player completion, mana income, leak rate, and boss time-to-kill after changing hero damage, summon cost, enemy rewards, or these pressure fields.
+
+## Adventure map bosses
+
+- Adventure maps contain five levels each.
+- Boss status is controlled by the assigned wave set's serialized **Has Boss** checkbox; it is never inferred from the level number.
+- The current design chooses the fifth level of each map as a boss level: global Levels 5 and 10 in the current ten-level campaign.
+- Map 1 Level 5 uses `waves_classic_005`; its last wave must end with exactly one Runestone Troll (`enemy_boss`).
+- Map 2 Level 5 (global Level 10) uses `waves_classic_010`; its last wave must end with exactly one Thorn Warden (`enemy_boss_warden`).
+- Levels 1-4 and 6-9 currently use their own non-boss wave sets. Any future level may use a boss-enabled wave set. A boss must remain the only boss spawn group, as the final spawn group of the final wave, with count 1.

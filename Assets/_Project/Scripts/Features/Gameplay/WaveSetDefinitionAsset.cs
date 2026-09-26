@@ -62,14 +62,24 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
     [CreateAssetMenu(menuName = "Tower Defense/Content/Wave Set Definition", fileName = "WaveSetDefinition")]
     public sealed class WaveSetDefinitionAsset : ScriptableObject
     {
+        [Header("Identity")]
         [SerializeField] private string _id;
+
+        [Header("Encounter")]
+        [Tooltip("Enable when this wave set contains a boss. The boss must be the final spawn group of the final wave and have Count 1.")]
+        [SerializeField] private bool _hasBoss;
+
+        [Header("Waves")]
         [SerializeField] private WaveAuthoringData[] _waves;
 
         public string Id => _id;
 
-        public void Configure(string id, WaveAuthoringData[] waves)
+        public bool HasBoss => _hasBoss;
+
+        public void Configure(string id, bool hasBoss, WaveAuthoringData[] waves)
         {
             _id = id;
+            _hasBoss = hasBoss;
             _waves = waves;
         }
 
@@ -78,6 +88,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             return new WaveSetDto
             {
                 Id = _id,
+                HasBoss = _hasBoss,
                 Waves = _waves == null
                     ? Array.Empty<WaveDto>()
                     : _waves.Where(wave => wave != null).Select(wave => wave.ToDto()).ToArray()

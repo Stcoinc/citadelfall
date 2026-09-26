@@ -37,7 +37,7 @@ Assets are stored under `Assets/_Project/Data/Authoring`:
 - `Enemies`: health, movement, damage, reward, tag, weakness, and prefab identity.
 - `WaveSets`: ordered waves and spawn groups referencing enemy assets.
 - `Levels`: mission balance, wave-set reference, and rewards.
-- `Battlefields`: optional editor templates for copying path and socket positions to or from an open Gameplay scene.
+- `Battlefields`: per-level Adventure layouts containing stable background IDs plus validated path and socket positions; they also support copying positions to or from the open Gameplay scene.
 
 Create new assets from `Assets > Create > Tower Defense > Content`.
 
@@ -51,6 +51,26 @@ Use **Create Level Name Fields** when changing `Max Level`, or **Fill Missing Na
 
 ### Adventure Defense
 
+Every campaign level now references its own `BattlefieldLayoutAsset` through the level asset's **Battlefield Layout** field. The ten assigned assets are `battlefield_level_001` through `battlefield_level_010` under `Data/Authoring/Battlefields`. Each battlefield stores a stable background ID, enemy path coordinates, and build-socket coordinates. `starter_content.json` schema 2 exports these as `Battlefields`, while each `Level` stores its `BattlefieldId`.
+
+The Gameplay scene authors the maximum reusable pool of path-point and socket GameObjects. Loading a campaign level repositions and activates only the configured objects; runtime code never creates the hierarchy. Endless keeps its separate scene-authored geometry and does not apply Adventure battlefield layouts.
+
+To edit one level safely:
+
+1. Open `Gameplay.unity` and ensure `MVP Gameplay Controller > Path Points` and **Tower Sockets** include every reusable scene object.
+2. Select the target `battlefield_level_###` asset and click **Apply To Active Gameplay Scene**. This applies its saved path points, sockets, and configured background binding together so the geometry can be aligned against the correct artwork.
+3. Move the existing path points and build sockets in the Scene view. Do not create runtime-only helpers.
+4. Set the battlefield asset's **Background Id** to one of the serialized IDs under `MVP Gameplay Controller > Background Bindings`.
+5. Click **Capture From Active Gameplay Scene** on that same battlefield asset.
+6. Select the matching `level_classic_###` asset and set **Build Socket Count** to the number of leading captured socket positions that should be active.
+7. Save the scene and run `Tower Defense > Content > Export All Authoring To Starter JSON`.
+
+Adventure Play Mode does not read the authoring ScriptableObjects directly. `GameplaySceneController` starts the mission from `AppRuntimeSession.ActiveContentJson`, which was loaded during the Intro flow from the exported local JSON or an accepted Firebase override. After capturing geometry or changing **Build Socket Count**, export before testing, leave Play Mode, and restart from Intro so the session reloads the new content. If Firebase supplies an older active version, it continues to override the local JSON until that remote version is updated or the game falls back to local content.
+
+To replace only a level background while preserving its saved path and sockets, open `Gameplay.unity`, select `MVP Gameplay Controller`, find the battlefield's existing ID under **Background Bindings**, and replace only that binding's **Sprite** reference. Then select the battlefield asset and click **Apply To Active Gameplay Scene** to preview the new background together with its saved geometry. Do not click **Capture From Active Gameplay Scene** unless the path or sockets were intentionally moved. For example, Level 2 uses `battlefield_level_002 > Background Id = background_forest_morning`; changing the `background_forest_morning` sprite and applying that battlefield preserves its stored coordinates.
+
+Capture reads the controller arrays, not arbitrary hierarchy children. A duplicated socket must be added to **Tower Sockets** before capture or it will not be saved or initialized.
+
 1. Open `Assets/_Project/Scenes/Gameplay/Gameplay.unity`.
 2. Move the existing `Enemy Path/Path Point` transforms in route order.
 3. Duplicate or move `Build Sockets/Build Socket` objects. Keep `SpriteRenderer`, `CircleCollider2D`, and `TowerPlacementSocket`.
@@ -59,7 +79,7 @@ Use **Create Level Name Fields** when changing `Max Level`, or **Fill Missing Na
 The Adventure HUD uses three mutually exclusive interaction states. Normal play shows the resource bar, guidance banner, direct-build hero tray, and action buttons. Tapping an occupied socket opens the compact right-side details drawer; the press that first places a hero must not open it. Mission completion hides the complete gameplay HUD before showing the separate full-screen victory modal. Keep the victory title, battle record, rewards, treasure, unlock notice, and Continue button inside `Victory Result Card`; do not place new result elements directly over the battlefield.
 5. Optionally select a `BattlefieldLayoutAsset` and use **Capture From Active Gameplay Scene** as a reusable position template.
 
-The scene arrays remain the runtime authority for geometry. A battlefield layout asset does not allow Firebase to move scene objects.
+The scene arrays remain the capacity and object-authoring authority. A validated schema 2 battlefield may reposition or deactivate those existing Adventure objects before mission initialization, but cannot create new scene objects, exceed the arrays, or alter an active mission.
 
 ### Citadel Fall Arena
 
@@ -99,3 +119,7 @@ Upload the exported `Assets/_Project/Data/Json/Defaults/starter_content.json` to
 Then set `/gameSettings/development/activeVersion` to that version. The Intro scene uses the remote content when available and the exported local JSON as the offline fallback.
 
 Use `Tower Defense > Content > Import Starter JSON To Authoring Assets` only when intentionally rebuilding the ScriptableObjects from JSON.
+
+Schema 3 Firebase content can configure each level's `BattlefieldId`, the referenced battlefield's path/socket coordinates and `BackgroundId`, its `WaveSetId`, and each wave set's `HasBoss` declaration. Coordinates are validated and capped before entering the runtime catalog. Background IDs may select only sprites already serialized in the shipped Gameplay scene; JSON alone cannot download a new Unity Sprite.
+
+Boss placement is not calculated from a level number. Open the level's assigned `WaveSetDefinitionAsset` under `Data/Authoring/WaveSets` and enable **Has Boss**. Then add exactly one enemy whose `Enemy Tag` begins with `boss` as the final spawn group of the final wave, with **Count** set to 1. Validation rejects a checked wave set with no final boss and an unchecked wave set that contains a boss. Any future level can become a boss level by referencing a correctly configured boss wave set. In the current campaign, Map 1 Level 5 uses `waves_classic_005` with the Runestone Troll and Map 2 Level 5/global Level 10 uses `waves_classic_010` with the Thorn Warden.

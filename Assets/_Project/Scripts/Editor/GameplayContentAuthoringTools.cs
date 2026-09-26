@@ -21,7 +21,6 @@ namespace ClubGamerZone.TowerDefense.Editor
         private const string LayoutFolder = AuthoringRoot + "/Battlefields";
         private const string TowerFolder = AuthoringRoot + "/Towers";
         private const string StarterContentJsonPath = "Assets/_Project/Data/Json/Defaults/starter_content.json";
-        private const string DefaultLayoutPath = LayoutFolder + "/battlefield_default.asset";
         private const string EnemyPrefabPath = "Assets/_Project/Prefabs/Enemies/EnemyScoutPlaceholder.prefab";
 
         [MenuItem("Tower Defense/Content/Import Starter JSON To Authoring Assets")]
@@ -47,17 +46,18 @@ namespace ClubGamerZone.TowerDefense.Editor
                     .Select(waveDto => BuildWave(waveDto, enemyAssets))
                     .ToArray();
                 var asset = LoadOrCreate<WaveSetDefinitionAsset>($"{WaveSetFolder}/{waveSetDto.Id}.asset");
-                asset.Configure(waveSetDto.Id, waves);
+                asset.Configure(waveSetDto.Id, waveSetDto.HasBoss, waves);
                 EditorUtility.SetDirty(asset);
                 waveSetAssets[waveSetDto.Id] = asset;
             }
 
-            var layout = LoadOrCreate<BattlefieldLayoutAsset>(DefaultLayoutPath);
-            var gameplayController = UnityEngine.Object.FindFirstObjectByType<MvpGameplayController>();
-            if (gameplayController != null && layout.PathPointCount == 0)
+            var battlefieldAssets = new Dictionary<string, BattlefieldLayoutAsset>(StringComparer.Ordinal);
+            foreach (var battlefieldDto in dto.Battlefields ?? Array.Empty<BattlefieldDto>())
             {
-                gameplayController.CaptureBattlefieldLayout(layout);
-                EditorUtility.SetDirty(layout);
+                var battlefield = LoadOrCreate<BattlefieldLayoutAsset>($"{LayoutFolder}/{battlefieldDto.Id}.asset");
+                battlefield.Configure(battlefieldDto);
+                EditorUtility.SetDirty(battlefield);
+                battlefieldAssets[battlefieldDto.Id] = battlefield;
             }
 
             var levelAssets = new List<LevelDefinitionAsset>();
@@ -65,14 +65,16 @@ namespace ClubGamerZone.TowerDefense.Editor
             {
                 waveSetAssets.TryGetValue(levelDto.WaveSetId, out var waveSet);
                 var asset = LoadOrCreate<LevelDefinitionAsset>($"{LevelFolder}/{levelDto.Id}.asset");
-                asset.Configure(levelDto, waveSet, layout);
+                battlefieldAssets.TryGetValue(levelDto.BattlefieldId, out var battlefield);
+                battlefield ??= asset.BattlefieldLayout;
+                asset.Configure(levelDto, waveSet, battlefield);
                 EditorUtility.SetDirty(asset);
                 levelAssets.Add(asset);
             }
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log($"Imported {enemyAssets.Count} enemies, {waveSetAssets.Count} wave sets, {levelAssets.Count} levels, and one battlefield layout.");
+            Debug.Log($"Imported {enemyAssets.Count} enemies, {waveSetAssets.Count} wave sets, {battlefieldAssets.Count} battlefields, and {levelAssets.Count} levels.");
         }
 
         [MenuItem("Tower Defense/Content/Export All Authoring To Starter JSON")]
@@ -82,6 +84,7 @@ namespace ClubGamerZone.TowerDefense.Editor
             content.Towers = LoadAssets<TowerDefinitionAsset>(TowerFolder).Select(asset => asset.ToDto()).ToArray();
             content.Enemies = LoadAssets<EnemyDefinitionAsset>(EnemyFolder).Select(asset => asset.ToDto()).ToArray();
             content.WaveSets = LoadAssets<WaveSetDefinitionAsset>(WaveSetFolder).Select(asset => asset.ToDto()).ToArray();
+            content.Battlefields = LoadAssets<BattlefieldLayoutAsset>(LayoutFolder).Select(asset => asset.ToDto()).ToArray();
             content.Levels = LoadAssets<LevelDefinitionAsset>(LevelFolder).Select(asset => asset.ToDto()).ToArray();
 
             var json = JsonUtility.ToJson(content, true);
@@ -97,7 +100,7 @@ namespace ClubGamerZone.TowerDefense.Editor
 
             File.WriteAllText(StarterContentJsonPath, json);
             AssetDatabase.ImportAsset(StarterContentJsonPath);
-            Debug.Log($"Exported {content.Towers.Length} towers, {content.Enemies.Length} enemies, {content.WaveSets.Length} wave sets, and {content.Levels.Length} levels to starter_content.json.");
+            Debug.Log($"Exported {content.Towers.Length} towers, {content.Enemies.Length} enemies, {content.WaveSets.Length} wave sets, {content.Battlefields.Length} battlefields, and {content.Levels.Length} levels to starter_content.json.");
         }
 
         private static WaveAuthoringData BuildWave(

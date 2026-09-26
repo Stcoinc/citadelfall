@@ -19,6 +19,8 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         [SerializeField] private string _levelId = "level_classic_001";
         [SerializeField] private Transform[] _pathPoints;
         [SerializeField] private TowerPlacementSocket[] _towerSockets;
+        [SerializeField] private SpriteRenderer _battlefieldBackground;
+        [SerializeField] private GameplayBackgroundBinding[] _backgroundBindings;
         [SerializeField] private GameObject _enemyPrefab;
         [SerializeField] private GameObject _towerPrefab;
         [SerializeField] private TMP_Text _statusText;
@@ -60,6 +62,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
         private bool _endlessMode;
         private int _endlessGlobalWave;
         private int _endlessScore;
+        private Transform[] _activePathPoints;
 
         public event Action<LevelDefinition> Victory;
 
@@ -243,6 +246,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 ? requestedLevel
                 : _catalog.Levels.Values.First();
 
+            ApplyLevelPresentation();
             _waveSetDefinition = _catalog.WaveSets[_levelDefinition.WaveSetId];
             _selectedTowerDefinition = FindDefaultBuildableTower();
             if (_missionState != null)
@@ -746,13 +750,14 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
         private void SpawnEnemy(EnemyDefinition enemyDefinition)
         {
-            if (_enemyPrefab == null || _pathPoints == null || _pathPoints.Length == 0)
+            var missionPath = _activePathPoints ?? _pathPoints;
+            if (_enemyPrefab == null || missionPath == null || missionPath.Length == 0)
             {
                 ReportStatus("Missing enemy prefab or path points.");
                 return;
             }
 
-            var enemyObject = Instantiate(_enemyPrefab, _pathPoints[0].position, Quaternion.identity);
+            var enemyObject = Instantiate(_enemyPrefab, missionPath[0].position, Quaternion.identity);
             var enemy = enemyObject.GetComponent<EnemyAgent>();
 
             if (enemy == null)
@@ -764,7 +769,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
             enemy.Destroyed += HandleEnemyDestroyed;
             enemy.ReachedBase += HandleEnemyReachedBase;
-            enemy.Initialize(enemyDefinition, _pathPoints);
+            enemy.Initialize(enemyDefinition, missionPath);
             _enemyRegistry.Register(enemy);
             _missionState.RegisterEnemySpawned();
             ReportStatus($"Spawned {enemyDefinition.Id}.");
@@ -787,12 +792,129 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
             layout.Configure(layout.Id, pathPositions, socketPositions);
         }
 
+        private void ApplyLevelPresentation()
+        {
+            _activePathPoints = _pathPoints == null
+                ? Array.Empty<Transform>()
+                : _pathPoints.Where(point => point != null).ToArray();
+
+            // Endless owns a separate scene-authored battlefield. It reuses level waves for
+            // pressure templates, but must not inherit the Adventure campaign geometry.
+            if (_endlessMode)
+            {
+                return;
+            }
+
+            if (!_levelDefinition.BattlefieldId.IsEmpty &&
+                _catalog.Battlefields.TryGetValue(_levelDefinition.BattlefieldId, out var battlefield))
+            {
+                ApplyBattlefieldDefinition(battlefield);
+                ApplyBackground(battlefield.BackgroundId);
+                return;
+            }
+
+            ApplySocketCount(_levelDefinition.BuildSocketCount);
+        }
+
+        private void ApplyBattlefieldDefinition(BattlefieldDefinition battlefield)
+        {
+            var availablePathCount = _pathPoints == null ? 0 : _pathPoints.Length;
+            if (battlefield.PathPoints.Count > availablePathCount)
+            {
+                Debug.LogWarning(
+                    $"Battlefield '{battlefield.Id}' requires {battlefield.PathPoints.Count} path points, " +
+                    $"but the scene authors only {availablePathCount}. The existing scene path will be used.",
+                    this);
+            }
+            else
+            {
+                var activePoints = new Transform[battlefield.PathPoints.Count];
+                for (var i = 0; i < _pathPoints.Length; i++)
+                {
+                    var point = _pathPoints[i];
+                    var isUsed = i < battlefield.PathPoints.Count;
+                    if (point == null)
+                    {
+                        continue;
+                    }
+
+                    point.gameObject.SetActive(isUsed);
+                    if (isUsed)
+                    {
+                        var configured = battlefield.PathPoints[i];
+                        point.position = new Vector3(configured.X, configured.Y, point.position.z);
+                        activePoints[i] = point;
+                    }
+                }
+
+                _activePathPoints = activePoints.Where(point => point != null).ToArray();
+            }
+
+            var socketCount = Mathf.Min(_levelDefinition.BuildSocketCount, battlefield.BuildSocketPositions.Count);
+            if (_towerSockets != null && battlefield.BuildSocketPositions.Count > _towerSockets.Length)
+            {
+                Debug.LogWarning(
+                    $"Battlefield '{battlefield.Id}' requires {battlefield.BuildSocketPositions.Count} sockets, " +
+                    $"but the scene authors only {_towerSockets.Length}. Extra remote positions are ignored.",
+                    this);
+            }
+
+            for (var i = 0; _towerSockets != null && i < _towerSockets.Length; i++)
+            {
+                var socket = _towerSockets[i];
+                if (socket == null)
+                {
+                    continue;
+                }
+
+                var isUsed = i < socketCount;
+                socket.gameObject.SetActive(isUsed);
+                if (isUsed)
+                {
+                    var configured = battlefield.BuildSocketPositions[i];
+                    socket.transform.position = new Vector3(configured.X, configured.Y, socket.transform.position.z);
+                }
+            }
+        }
+
+        private void ApplySocketCount(int requestedCount)
+        {
+            for (var i = 0; _towerSockets != null && i < _towerSockets.Length; i++)
+            {
+                if (_towerSockets[i] != null)
+                {
+                    _towerSockets[i].gameObject.SetActive(i < requestedCount);
+                }
+            }
+        }
+
+        private void ApplyBackground(string backgroundId)
+        {
+            if (_battlefieldBackground == null || _backgroundBindings == null || string.IsNullOrWhiteSpace(backgroundId))
+            {
+                return;
+            }
+
+            var binding = _backgroundBindings.FirstOrDefault(candidate =>
+                candidate != null && string.Equals(candidate.Id, backgroundId, StringComparison.Ordinal));
+            if (binding == null || binding.Sprite == null)
+            {
+                Debug.LogWarning($"No authored Gameplay background is assigned for id '{backgroundId}'.", this);
+                return;
+            }
+
+            _battlefieldBackground.sprite = binding.Sprite;
+            _battlefieldBackground.color = binding.Tint;
+        }
+
         public void ApplyBattlefieldLayoutPreview(BattlefieldLayoutAsset layout)
         {
             if (layout == null)
             {
                 return;
             }
+
+            ApplyBackground(layout.BackgroundId);
 
             var pathCount = Mathf.Min(layout.PathPointCount, _pathPoints == null ? 0 : _pathPoints.Length);
             for (var i = 0; i < pathCount; i++)

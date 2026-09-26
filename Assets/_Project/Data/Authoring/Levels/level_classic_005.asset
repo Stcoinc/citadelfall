@@ -19,7 +19,7 @@ MonoBehaviour:
   _baseHealth: 36
   _buildSocketCount: 8
   _waveSet: {fileID: 11400000, guid: 8b364dc079d2f2648a0bb2535d3be7ea, type: 2}
-  _battlefieldLayout: {fileID: 11400000, guid: 2a8384754dc77d24193ac36777f4a658, type: 2}
+  _battlefieldLayout: {fileID: 11400000, guid: c383859ed6a049bf945d1b273db0a76f, type: 2}
   _rewardScrap: 160
   _rewardCoins: 230
   _rewardGems: 3

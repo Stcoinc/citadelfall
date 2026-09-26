@@ -65,6 +65,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
                 StartingScrap = _startingScrap,
                 BaseHealth = _baseHealth,
                 BuildSocketCount = _buildSocketCount,
+                BattlefieldId = _battlefieldLayout == null ? string.Empty : _battlefieldLayout.Id,
                 WaveSetId = _waveSet == null ? string.Empty : _waveSet.Id,
                 RewardScrap = _rewardScrap,
                 RewardCoins = _rewardCoins,

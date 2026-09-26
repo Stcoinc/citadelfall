@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7b97455d3deb341aed43b539a35a7f, type: 3}
+  m_Name: waves_classic_008
+  m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.WaveSetDefinitionAsset
+  _id: waves_classic_008
+  _hasBoss: 0
+  _waves:
+  - _id: wave_001
+    _startDelaySeconds: 1
+    _spawns:
+    - _enemy: {fileID: 11400000, guid: 1a3e117aac2c58c42acef37a912334e6, type: 2}
+      _count: 18
+      _intervalSeconds: 0.38
+    - _enemy: {fileID: 11400000, guid: 97b92e3fd9d8f7d47be64bf5faab4965, type: 2}
+      _count: 20
+      _intervalSeconds: 0.32
+  - _id: wave_002
+    _startDelaySeconds: 2
+    _spawns:
+    - _enemy: {fileID: 11400000, guid: ab14a3a1bebe3a947a113c0e8169bff8, type: 2}
+      _count: 10
+      _intervalSeconds: 0.9
+  - _id: wave_003
+    _startDelaySeconds: 2
+    _spawns:
+    - _enemy: {fileID: 11400000, guid: 7863a4694d3eaf94b907b898b9e5ed1c, type: 2}
+      _count: 10
+      _intervalSeconds: 0.78
+    - _enemy: {fileID: 11400000, guid: 1414de91016ae79489c35ffac481126b, type: 2}
+      _count: 8
+      _intervalSeconds: 1
+  - _id: wave_004
+    _startDelaySeconds: 2
+    _spawns:
+    - _enemy: {fileID: 11400000, guid: 1a3e117aac2c58c42acef37a912334e6, type: 2}
+      _count: 24
+      _intervalSeconds: 0.3
+    - _enemy: {fileID: 11400000, guid: ab14a3a1bebe3a947a113c0e8169bff8, type: 2}
+      _count: 10
+      _intervalSeconds: 0.85

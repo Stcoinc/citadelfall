@@ -1630,12 +1630,12 @@ GameObject:
   - component: {fileID: 122873824}
   - component: {fileID: 122873823}
   m_Layer: 0
-  m_Name: Build Socket 6 (6)
+  m_Name: Build Socket 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &122873822
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,7 +1645,7 @@ Transform:
   m_GameObject: {fileID: 122873821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9, y: 3.28, z: 0}
+  m_LocalPosition: {x: 3.79, y: 2.12, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1882,7 +1882,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1895,7 +1895,7 @@ Transform:
   m_GameObject: {fileID: 130665933}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.51, y: 1.12, z: 0}
+  m_LocalPosition: {x: -5.44, y: 3.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2828,7 +2828,7 @@ GameObject:
   - component: {fileID: 194540769}
   - component: {fileID: 194540768}
   m_Layer: 0
-  m_Name: Build Socket 6 (3)
+  m_Name: Build Socket 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2843,7 +2843,7 @@ Transform:
   m_GameObject: {fileID: 194540766}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.69, y: -3.21, z: 0}
+  m_LocalPosition: {x: -6.3, y: 2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3579,7 +3579,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3592,7 +3592,7 @@ Transform:
   m_GameObject: {fileID: 247845031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 0.43, z: 0}
+  m_LocalPosition: {x: 3.3, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4795,12 +4795,12 @@ GameObject:
   - component: {fileID: 385882196}
   - component: {fileID: 385882195}
   m_Layer: 0
-  m_Name: Build Socket 6 (5)
+  m_Name: Build Socket 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &385882194
 Transform:
   m_ObjectHideFlags: 0
@@ -4810,7 +4810,7 @@ Transform:
   m_GameObject: {fileID: 385882193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.01, y: 2.2, z: 0}
+  m_LocalPosition: {x: 1.26, y: 3.47, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5303,7 +5303,7 @@ GameObject:
   - component: {fileID: 454893822}
   - component: {fileID: 454893821}
   m_Layer: 0
-  m_Name: Build Socket 6 (4)
+  m_Name: Build Socket 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5318,7 +5318,7 @@ Transform:
   m_GameObject: {fileID: 454893819}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.28, y: 3.47, z: 0}
+  m_LocalPosition: {x: 3.7, y: 1.22, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6864,7 +6864,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6877,7 +6877,7 @@ Transform:
   m_GameObject: {fileID: 598358128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.65, z: 0}
+  m_LocalPosition: {x: 0.08, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7878,7 +7878,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7891,7 +7891,7 @@ Transform:
   m_GameObject: {fileID: 718888245}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.77, y: 2.1, z: 0}
+  m_LocalPosition: {x: 2.57, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8255,7 +8255,7 @@ Transform:
   m_GameObject: {fileID: 829785254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.79, y: 2.12, z: 0}
+  m_LocalPosition: {x: 4.99, y: -1.95, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8745,7 +8745,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8758,7 +8758,7 @@ Transform:
   m_GameObject: {fileID: 943603037}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.02, y: 0.94, z: 0}
+  m_LocalPosition: {x: 6.04, y: -0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9476,7 +9476,7 @@ Transform:
   m_GameObject: {fileID: 1071752212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.44, y: -1.03, z: 0}
+  m_LocalPosition: {x: 1.55, y: 0.37, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10242,7 +10242,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10255,7 +10255,7 @@ Transform:
   m_GameObject: {fileID: 1170626680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.58, y: -2.07, z: 0}
+  m_LocalPosition: {x: 6.83, y: -3.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10274,7 +10274,7 @@ GameObject:
   - component: {fileID: 1172361130}
   - component: {fileID: 1172361129}
   m_Layer: 0
-  m_Name: Build Socket 6 (1)
+  m_Name: Build Socket 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10289,7 +10289,7 @@ Transform:
   m_GameObject: {fileID: 1172361127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.26, y: 3.47, z: 0}
+  m_LocalPosition: {x: 5.15, y: 0.06, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -11184,7 +11184,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11197,7 +11197,7 @@ Transform:
   m_GameObject: {fileID: 1303737638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.79, y: 0.98, z: 0}
+  m_LocalPosition: {x: -8.9, y: 2.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11700,7 +11700,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11713,7 +11713,7 @@ Transform:
   m_GameObject: {fileID: 1364138974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.74, y: 1.97, z: 0}
+  m_LocalPosition: {x: -3.06, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11822,7 +11822,7 @@ Transform:
   m_GameObject: {fileID: 1441671922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.76, y: -0.15, z: 0}
+  m_LocalPosition: {x: -4.79, y: -0.22, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -12569,6 +12569,44 @@ MonoBehaviour:
   - {fileID: 1646428697}
   - {fileID: 1071752216}
   - {fileID: 829785255}
+  - {fileID: 1172361129}
+  - {fileID: 2021789646}
+  - {fileID: 194540768}
+  - {fileID: 454893821}
+  - {fileID: 385882195}
+  - {fileID: 122873823}
+  _battlefieldBackground: {fileID: 1592219925}
+  _backgroundBindings:
+  - _id: background_forest_dawn
+    _sprite: {fileID: 21300000, guid: 8d4964eb33be93e49bdab8d0a446b4de, type: 3}
+    _tint: {r: 1, g: 1, b: 1, a: 1}
+  - _id: background_forest_morning
+    _sprite: {fileID: 21300000, guid: 5b69b22955c6baf42aec7442c796277d, type: 3}
+    _tint: {r: 0.9, g: 1, b: 0.88, a: 1}
+  - _id: background_forest_rain
+    _sprite: {fileID: 21300000, guid: 058e6a652b4ba2842924f144f6c0ebf2, type: 3}
+    _tint: {r: 0.72, g: 0.84, b: 1, a: 1}
+  - _id: background_forest_sunset
+    _sprite: {fileID: 21300000, guid: e3bb5167613e4f69adae50f44e36efcc, type: 3}
+    _tint: {r: 1, g: 0.88, b: 0.72, a: 1}
+  - _id: background_forest_boss
+    _sprite: {fileID: 21300000, guid: 7be81899b1853bc4488445f0fc99d4bb, type: 3}
+    _tint: {r: 0.82, g: 0.7, b: 0.7, a: 1}
+  - _id: background_highlands
+    _sprite: {fileID: 21300000, guid: d37f356feb3fa6e4981710e521d393fc, type: 3}
+    _tint: {r: 1, g: 1, b: 1, a: 1}
+  - _id: background_highlands_dusk
+    _sprite: {fileID: 21300000, guid: d37f356feb3fa6e4981710e521d393fc, type: 3}
+    _tint: {r: 0.78, g: 0.74, b: 1, a: 1}
+  - _id: background_citadel_road
+    _sprite: {fileID: 21300000, guid: e3bb5167613e4f69adae50f44e36efcc, type: 3}
+    _tint: {r: 0.82, g: 0.9, b: 1, a: 1}
+  - _id: background_tempest_approach
+    _sprite: {fileID: 21300000, guid: 7be81899b1853bc4488445f0fc99d4bb, type: 3}
+    _tint: {r: 0.7, g: 0.78, b: 0.94, a: 1}
+  - _id: background_tempest_boss
+    _sprite: {fileID: 21300000, guid: 512ec74f4bc0457db93d743a99a3d05d, type: 3}
+    _tint: {r: 0.78, g: 0.62, b: 0.62, a: 1}
   _enemyPrefab: {fileID: 5373440791039933660, guid: c221db5c3edaa5c42963eac807ab461f, type: 3}
   _towerPrefab: {fileID: 8006705434921343632, guid: 9e8d44d67a290134f8172703dcda8f47, type: 3}
   _statusText: {fileID: 1980615911}
@@ -12611,7 +12649,7 @@ MonoBehaviour:
   - hero_archer
   - hero_druid
   - hero_sorcerer
-  _emergencyHeroId: hero_warrior
+  _emergencyHeroId: hero_mage
   _selectedTowerFrameColor: {r: 0.2, g: 0.9, b: 1, a: 1}
   _unselectedTowerFrameColor: {r: 1, g: 1, b: 1, a: 1}
   _unavailableTowerFrameColor: {r: 0.28, g: 0.3, b: 0.32, a: 0.82}
@@ -12860,7 +12898,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12873,7 +12911,7 @@ Transform:
   m_GameObject: {fileID: 1497525916}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.08, y: -0.54, z: 0}
+  m_LocalPosition: {x: -1.5, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13297,7 +13335,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (6)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13601,7 +13639,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 6 (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13614,7 +13652,7 @@ Transform:
   m_GameObject: {fileID: 1563153806}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 2.01, z: 0}
+  m_LocalPosition: {x: 1.3, y: 1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13686,8 +13724,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -20
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 8d4964eb33be93e49bdab8d0a446b4de, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 058e6a652b4ba2842924f144f6c0ebf2, type: 3}
+  m_Color: {r: 0.72, g: 0.84, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -14308,7 +14346,7 @@ Transform:
   m_GameObject: {fileID: 1646428693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.71, y: 1.12, z: 0}
+  m_LocalPosition: {x: -1.81, y: -1.28, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -14981,7 +15019,7 @@ Transform:
   m_GameObject: {fileID: 1738404625}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.14, y: 0.75, z: 0}
+  m_LocalPosition: {x: -4.85, y: 3.58, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16131,7 +16169,7 @@ GameObject:
   m_Layer: 0
   m_Name: Path Point 3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -16144,7 +16182,7 @@ Transform:
   m_GameObject: {fileID: 1976701631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.69, y: 2.5, z: 0}
+  m_LocalPosition: {x: -5.03, y: 0.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16512,7 +16550,7 @@ GameObject:
   - component: {fileID: 2021789647}
   - component: {fileID: 2021789646}
   m_Layer: 0
-  m_Name: Build Socket 6 (2)
+  m_Name: Build Socket 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16527,7 +16565,7 @@ Transform:
   m_GameObject: {fileID: 2021789644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.9, y: -0.26, z: 0}
+  m_LocalPosition: {x: -2.8, y: 1.14, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -17476,7 +17514,7 @@ Transform:
   m_GameObject: {fileID: 2060453977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.76, y: -2.02, z: 0}
+  m_LocalPosition: {x: 1.72, y: 2.31, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:

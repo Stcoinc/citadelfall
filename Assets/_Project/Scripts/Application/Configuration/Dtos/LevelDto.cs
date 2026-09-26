@@ -11,6 +11,7 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration.Dtos
         public int StartingScrap;
         public int BaseHealth;
         public int BuildSocketCount;
+        public string BattlefieldId;
         public string WaveSetId;
         public int RewardScrap;
         public int RewardCoins;

@@ -11,6 +11,7 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             int startingScrap,
             int baseHealth,
             int buildSocketCount,
+            StableId battlefieldId,
             StableId waveSetId,
             int rewardScrap,
             int rewardCoins,
@@ -23,6 +24,7 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
             StartingScrap = startingScrap;
             BaseHealth = baseHealth;
             BuildSocketCount = buildSocketCount;
+            BattlefieldId = battlefieldId;
             WaveSetId = waveSetId;
             RewardScrap = rewardScrap;
             RewardCoins = rewardCoins;
@@ -41,6 +43,8 @@ namespace ClubGamerZone.TowerDefense.Domain.Content
         public int BaseHealth { get; }
 
         public int BuildSocketCount { get; }
+
+        public StableId BattlefieldId { get; }
 
         public StableId WaveSetId { get; }
 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: level_classic_004
   m_EditorClassIdentifier: Project.Features.Gameplay::ClubGamerZone.TowerDefense.Features.Gameplay.LevelDefinitionAsset
   _id: level_classic_004
-  _displayNameKey: Void Crystal Rift
+  _displayNameKey: w
   _mode: 0
   _startingScrap: 165
   _baseHealth: 32
   _buildSocketCount: 8
   _waveSet: {fileID: 11400000, guid: 46714c56da710634f8869cc43f3b7b7b, type: 2}
-  _battlefieldLayout: {fileID: 11400000, guid: 2a8384754dc77d24193ac36777f4a658, type: 2}
+  _battlefieldLayout: {fileID: 11400000, guid: 08a57981dac74acc8210bcb871a6dfa2, type: 2}
   _rewardScrap: 120
   _rewardCoins: 170
   _rewardGems: 2

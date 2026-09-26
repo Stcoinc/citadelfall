@@ -318,7 +318,9 @@ The battlefield contains:
 - Hero sockets: a 3 x 5 Arena formation or a scene-authored Adventure/Endless layout.
 - Optional temporary tactical zones.
 
-All modes must use authored placement sockets or an explicit validated grid. They must not use unconstrained physics-based construction. Firebase may balance match rules and content stats but may not move scene-authored geometry at runtime.
+All modes must use authored placement sockets or an explicit validated grid. They must not use unconstrained physics-based construction. Owner-approved Adventure campaign battlefield configuration may reposition and activate a bounded pool of pre-authored path-point and build-socket GameObjects before mission initialization using validated versioned battlefield coordinates from local/Firebase-compatible content. It must never create the authored hierarchy, exceed the scene's serialized capacity, move cameras or UI, or mutate geometry during an active mission. Arena and Endless retain their dedicated scene-authored geometry unless the owner explicitly approves an equivalent scoped data contract.
+
+Adventure boss levels are data-driven rather than inferred from a level number. A `WaveSetDefinitionAsset` exposes **Has Boss**; when enabled, that wave set must contain exactly one boss-tagged spawn group as the final group of the final wave, with count 1. Any current or future level may reference a boss-enabled wave set.
 
 ## 9. Ship Structure
 

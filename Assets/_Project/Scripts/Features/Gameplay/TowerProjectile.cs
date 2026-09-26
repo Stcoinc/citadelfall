@@ -60,7 +60,7 @@ namespace ClubGamerZone.TowerDefense.Features.Gameplay
 
         private void Update()
         {
-            if (_target == null)
+            if (_target == null || !_target.IsTargetable)
             {
                 Destroy(gameObject);
                 return;

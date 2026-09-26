@@ -33,11 +33,12 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                 spawn.Configure(enemy, 12, 0.4f);
                 var wave = new WaveAuthoringData();
                 wave.Configure("wave_rat_001", 1.5f, new[] { spawn });
-                waveSet.Configure("waves_rat_001", new[] { wave });
+                waveSet.Configure("waves_rat_001", false, new[] { wave });
 
                 var dto = waveSet.ToDto();
 
                 Assert.That(dto.Id, Is.EqualTo("waves_rat_001"));
+                Assert.That(dto.HasBoss, Is.False);
                 Assert.That(dto.Waves[0].Spawns[0].EnemyId, Is.EqualTo("enemy_rat"));
                 Assert.That(dto.Waves[0].Spawns[0].Count, Is.EqualTo(12));
             }
@@ -62,6 +63,7 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                 Assert.That(layout.PathPointCount, Is.EqualTo(2));
                 Assert.That(layout.GetPathPoint(0), Is.EqualTo(new Vector2(-4f, 2f)));
                 Assert.That(layout.BuildSocketCount, Is.EqualTo(1));
+                Assert.That(layout.ToDto().BackgroundId, Is.EqualTo("background_forest_01"));
             }
             finally
             {
@@ -151,6 +153,7 @@ namespace ClubGamerZone.TowerDefense.Tests.EditMode.Configuration
                         StartingScrap = 100,
                         BaseHealth = 20,
                         BuildSocketCount = 1,
+                        BattlefieldId = string.Empty,
                         WaveSetId = "waves_test",
                         RewardScrap = 1,
                         RewardCoins = 1,

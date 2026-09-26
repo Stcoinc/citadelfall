@@ -4,7 +4,7 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
     {
         public int MinimumSchemaVersion { get; } = 1;
 
-        public int MaximumSupportedSchemaVersion { get; } = 1;
+        public int MaximumSupportedSchemaVersion { get; } = 3;
 
         public int MaximumTowers { get; } = 256;
 
@@ -13,6 +13,14 @@ namespace ClubGamerZone.TowerDefense.Application.Configuration
         public int MaximumLevels { get; } = 512;
 
         public int MaximumWaveSets { get; } = 512;
+
+        public int MaximumBattlefields { get; } = 512;
+
+        public int MaximumPathPointsPerBattlefield { get; } = 128;
+
+        public int MaximumBuildSocketsPerBattlefield { get; } = 64;
+
+        public float MaximumBattlefieldCoordinateMagnitude { get; } = 1000f;
 
         public int MaximumWavesPerSet { get; } = 200;
 
